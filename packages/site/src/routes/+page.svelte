@@ -27,13 +27,12 @@
         <label>
             When should it expire?
 
-            <select name="expiry" value={form?.expiry ?? undefined} required>
-                <option value={undefined}>Never</option>
-                <option value="ten_minutes">10 Minutes</option>
-                <option value="thirty_minutes">30 Minutes</option>
-                <option value="one_hour">1 Hour</option>
-                <option value="one_week">1 Week</option>
+            <select name="expiry" value={form?.expiry ?? 'one_month'} required>
                 <option value="one_month">1 Month</option>
+                <option value="one_week">1 Week</option>
+                <option value="one_hour">1 Hour</option>
+                <option value="thirty_minutes">30 Minutes</option>
+                <option value="ten_minutes">10 Minutes</option>
             </select>
         </label>
 
