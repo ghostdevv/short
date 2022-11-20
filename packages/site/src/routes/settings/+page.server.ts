@@ -6,9 +6,13 @@ export const actions: Actions = {
 
         const backendUrl = data.get('backendUrl');
 
-        if (typeof backendUrl == 'string') {``
+        if (typeof backendUrl == 'string') {
             cookies.set('backendUrl', backendUrl);
         }
+
+        return {
+            backendUrl,
+        };
     },
 };
 

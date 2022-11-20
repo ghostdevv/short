@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { ActionData } from './$types';
+    import { enhance } from '$app/forms';
     import { page } from '$app/stores';
 
     export let form: ActionData;
@@ -13,7 +14,7 @@
 <hr />
 
 <section>
-    <form method="POST" action="/" class="link-form">
+    <form method="POST" action="/" class="link-form" use:enhance>
         <label>
             What link would you like to shorten?
 

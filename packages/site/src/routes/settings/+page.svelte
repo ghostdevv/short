@@ -1,7 +1,9 @@
 <script lang="ts">
-    import type { PageData } from './$types';
+    import type { PageData, ActionData } from './$types';
+    import { enhance } from '$app/forms';
 
     export let data: PageData;
+    export let form: ActionData;
 </script>
 
 <section class="col">
@@ -14,10 +16,14 @@
 <section class="settings">
     <h2>General</h2>
 
-    <form method="POST" action="?/general">
+    <form method="POST" action="?/general" use:enhance>
         <label>
             Backend Url
-            <input type="text" name="backendUrl" value={data.backendUrl} />
+
+            <input
+                type="text"
+                name="backendUrl"
+                value={form?.backendUrl || data?.backendUrl} />
         </label>
 
         <button>Save</button>
