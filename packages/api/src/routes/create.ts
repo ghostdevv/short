@@ -26,7 +26,7 @@ export default route(async (request, context) => {
     const link = result.data.link;
 
     // TODO check for collisions
-    const key = nanoid(8);
+    const key = nanoid(8).toLowerCase();
 
     await write<Link>(context.bindings.LINKS, key, {
         key,

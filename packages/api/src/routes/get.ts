@@ -4,7 +4,7 @@ import { route } from '../utils/route';
 import type { Link } from '../types';
 
 export default route(async (request, context) => {
-    const { key } = context.params;
+    const key = context.params.key.toLowerCase();
 
     const result = await read<Link>(context.bindings.LINKS, key);
 
