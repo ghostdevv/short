@@ -11,7 +11,7 @@ const config = {
         adapter: adapter(),
 
         csrf: {
-            checkOrigin: import.meta.env.MODE == 'dev',
+            checkOrigin: import.meta?.env?.MODE == 'dev',
         },
     },
 };
