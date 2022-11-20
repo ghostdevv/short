@@ -17,7 +17,12 @@ export const actions: Actions = {
 };
 
 export const load: PageServerLoad = ({ cookies }) => {
+    // TODO put on $page.data
+    if (!cookies.get('backendUrl')) {
+        cookies.set('backendUrl', 'https://short-api.willow.sh');
+    }
+
     return {
-        backendUrl: cookies.get('backendUrl') || 'TODO',
+        backendUrl: cookies.get('backendUrl'),
     };
 };
