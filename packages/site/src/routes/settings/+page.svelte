@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { ActionData, PageData } from './$types';
+    import { enhance } from '$app/forms';
 
     export let data: PageData;
     export let form: ActionData;
@@ -22,7 +23,7 @@
 <section class="settings">
     <h2>General</h2>
 
-    <form method="POST" action="?/general">
+    <form method="POST" action="?/general" use:enhance>
         <label>
             Account Phrase
 
