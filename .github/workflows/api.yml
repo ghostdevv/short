@@ -6,6 +6,7 @@ on:
       - "main"
     paths:
       - packages/api/**
+  workflow_dispatch:
 
 jobs:
   release:
