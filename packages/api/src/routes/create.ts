@@ -1,8 +1,8 @@
 import { expiryStrings, resolveExpiry } from '../utils/expiry';
+import { type KV, write, read } from 'worktop/cfw.kv';
 import { formatZodIssue } from '../utils/zod';
 import { reply } from 'worktop/response';
 import { route } from '../utils/route';
-import { write } from 'worktop/cfw.kv';
 import type { Link } from '../types';
 import { nanoid } from 'nanoid';
 import z from 'zod';
@@ -11,6 +11,13 @@ const schema = z.object({
     link: z.string().url(),
     expiry: z.enum(expiryStrings),
 });
+
+async function generateKey(LINKS: KV.Namespace): Promise<string> {
+    const key = nanoid(8).toLowerCase();
+    const exists = await read<Link>(LINKS, key);
+
+    return exists ? await generateKey(LINKS) : key;
+}
 
 export default route(async (request, context) => {
     const body = await request.json();
@@ -25,8 +32,7 @@ export default route(async (request, context) => {
     const expiresAt = resolveExpiry(result.data.expiry);
     const link = result.data.link;
 
-    // TODO check for collisions
-    const key = nanoid(8).toLowerCase();
+    const key = await generateKey(context.bindings.LINKS);
 
     await write<Link>(context.bindings.LINKS, key, {
         key,
