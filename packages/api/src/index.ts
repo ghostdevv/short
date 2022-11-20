@@ -4,6 +4,7 @@ import * as CORS from 'worktop/cors';
 import { start } from 'worktop/cfw';
 
 import createRoute from './routes/create';
+import listRoute from './routes/list';
 import getRoute from './routes/get';
 
 // Create new Router
@@ -17,6 +18,7 @@ API.prepare = compose(
     }),
 );
 
+API.add('GET', '/list/:account', listRoute);
 API.add('POST', '/create', createRoute);
 API.add('GET', '/get/:key', getRoute);
 

@@ -15,6 +15,7 @@ export const actions: Actions = {
                 urlJoin(PUBLIC_BACKEND_URL, '/create'),
                 {
                     data: { expiry, link, account: locals.account },
+                    
                     method: 'POST',
                     manual: true,
                 },

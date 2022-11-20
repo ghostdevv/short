@@ -1,11 +1,12 @@
 <script lang="ts">
     import 'ghostsui';
-    import { faCog, faClose } from '@fortawesome/free-solid-svg-icons';
+    import { faCog, faClose, faUser } from '@fortawesome/free-solid-svg-icons';
     import { faGithub } from '@fortawesome/free-brands-svg-icons';
     import { page } from '$app/stores';
     import Fa from 'svelte-fa';
 
     $: settingsPage = $page.url.pathname.startsWith('/settings');
+    $: accountPage = $page.url.pathname.startsWith('/account');
 </script>
 
 <nav>
@@ -16,9 +17,15 @@
         <Fa size="1.5x" icon={faGithub} />
     </a>
 
-    <a href={settingsPage ? '/' : '/settings'}>
-        <Fa size="1.5x" icon={settingsPage ? faClose : faCog} />
-    </a>
+    <div class="buttons">
+        <a href={accountPage ? '/' : '/account'}>
+            <Fa size="1.4x" icon={accountPage ? faClose : faUser} />
+        </a>
+
+        <a href={settingsPage ? '/' : '/settings'}>
+            <Fa size="1.5x" icon={settingsPage ? faClose : faCog} />
+        </a>
+    </div>
 </nav>
 
 <main>
@@ -31,8 +38,14 @@
 
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: space-between;
         gap: 8px;
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         a {
             padding: 8px;
