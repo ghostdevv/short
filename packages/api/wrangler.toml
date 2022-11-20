@@ -6,7 +6,7 @@ compatibility_date = "2022-11-03"
 
 kv_namespaces = [
     { binding = "LINKS", id = "7362a4ae21a94266819b37315cf53f71" },
-    { binding = "LINKS_MAP" }
+    { binding = "LINKS_MAP", id = "a3ee90971a0f4ce2bfc24ac9491b2ab4" }
 ]
 
 [build]
