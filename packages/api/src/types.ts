@@ -8,7 +8,12 @@ export interface Context extends DefaultContext {
 }
 
 export interface Link {
+    type: LinkType;
     key: string;
     link: string;
     expiresAt: number;
+}
+
+export enum LinkType {
+    Basic,
 }

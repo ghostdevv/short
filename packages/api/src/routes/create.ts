@@ -1,9 +1,9 @@
 import { expiryStrings, resolveExpiry } from '../utils/expiry';
 import { type KV, write, read } from 'worktop/cfw.kv';
 import { formatZodIssue } from '../utils/zod';
+import { Link, LinkType } from '../types';
 import { reply } from 'worktop/response';
 import { route } from '../utils/route';
-import type { Link } from '../types';
 import { nanoid } from 'nanoid';
 import z from 'zod';
 
@@ -35,6 +35,7 @@ export default route(async (request, context) => {
     const key = await generateKey(context.bindings.LINKS);
 
     await write<Link>(context.bindings.LINKS, key, {
+        type: LinkType.Basic,
         key,
         link,
         expiresAt,
