@@ -1,17 +1,13 @@
-import { error, type Handle } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit';
 import { fetch } from '$lib/fetch';
 
 async function getAccount(potential?: string) {
     if (typeof potential != 'string' || !potential.trim().length) {
-        try {
-            const { uuid } = await fetch<{ uuid: string }>(
-                'https://uuid.rocks/json',
-            );
+        const { uuid } = await fetch<{ uuid: string }>(
+            'https://uuid.rocks/json',
+        );
 
-            return uuid;
-        } catch (e) {
-            throw error(500, `${e}`);
-        }
+        return uuid;
     }
 
     return potential;
