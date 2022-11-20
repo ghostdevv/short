@@ -1,12 +1,13 @@
-import type { PageServerLoad } from './$types';
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import { error, redirect } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 import { fetch } from '$lib/fetch';
 import urlJoin from 'url-join';
 
-async function getRedirectUrl(backendUrl: string, key: string) {
+async function getRedirectUrl(key: string) {
     try {
         const data = await fetch<{ link: string }>(
-            urlJoin(backendUrl, '/get', key),
+            urlJoin(PUBLIC_BACKEND_URL, '/get', key),
         );
 
         return data.link;
@@ -20,14 +21,6 @@ async function getRedirectUrl(backendUrl: string, key: string) {
 }
 
 export const load: PageServerLoad = async ({ params, cookies }) => {
-    const backendUrl = cookies.get('backendUrl');
-
-    if (typeof backendUrl != 'string')
-        throw error(400, {
-            message: 'Unable to find backend url',
-        });
-
-    const link = await getRedirectUrl(backendUrl, params.key);
-
+    const link = await getRedirectUrl(params.key);
     throw redirect(307, link);
 };

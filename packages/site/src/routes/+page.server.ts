@@ -1,3 +1,4 @@
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import type { Actions } from './$types';
 import { invalid } from '@sveltejs/kit';
 import { fetch } from '$lib/fetch';
@@ -9,15 +10,9 @@ export const actions: Actions = {
         const expiry = data.get('expiry');
         const link = data.get('link');
 
-        const backendUrl = cookies.get('backendUrl');
-
-        if (typeof backendUrl != 'string') {
-            return invalid(400, { expiry, link, error: 'Missing Backend URL' });
-        }
-
         try {
             const data = await fetch<{ key: string }>(
-                urlJoin(backendUrl, '/create'),
+                urlJoin(PUBLIC_BACKEND_URL, '/create'),
                 {
                     data: { expiry, link },
                     method: 'POST',
