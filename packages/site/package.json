@@ -12,12 +12,17 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
+		"ghostsui": "^1.5.0",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
+		"sass": "^1.56.1",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.7.1",
+		"svelte-fa": "^3.0.3",
+		"svelte-local-storage-store": "^0.3.1",
 		"svelte-preprocess": "^4.10.6",
 		"tslib": "^2.3.1",
 		"typescript": "^4.7.4",
