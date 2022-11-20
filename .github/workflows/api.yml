@@ -31,4 +31,4 @@ jobs:
         run: pnpm install
 
       - name: Publish
-        run: cd ./packages/api && wrangler deploy
+        run: cd ./packages/api && pnpm run deploy

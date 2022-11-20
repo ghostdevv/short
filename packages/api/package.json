@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "build": "worktop build src/index.ts",
-    "dev": "miniflare -w"
+    "dev": "miniflare -w",
+    "deploy": "wrangler publish"
   },
   "dependencies": {
     "worktop": "next"
