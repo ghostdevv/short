@@ -1,7 +1,7 @@
-import type { PageServerLoad, Actions } from './$types';
+import type { Actions } from './$types';
 import { invalid } from '@sveltejs/kit';
-import urlJoin from 'url-join';
 import { fetch } from '$lib/fetch';
+import urlJoin from 'url-join';
 
 export const actions: Actions = {
     default: async ({ request, cookies }) => {
