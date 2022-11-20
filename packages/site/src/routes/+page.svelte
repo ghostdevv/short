@@ -1,6 +1,7 @@
 <script lang="ts">
-    import type { ActionData } from './$types';
+    import type { ActionData, PageData } from './$types';
 
+    export let data: PageData;
     export let form: ActionData;
 </script>
 
@@ -39,6 +40,8 @@
         <button> Shorten it! </button>
     </form>
 </section>
+
+{data.backendUrl}
 
 <style lang="scss">
     .link-form {

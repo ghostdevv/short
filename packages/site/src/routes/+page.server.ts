@@ -1,6 +1,6 @@
+import type { PageServerLoad, Actions } from './$types';
 import type { ExpiryString } from '$lib/types';
 import { invalid } from '@sveltejs/kit';
-import type { Actions } from './$types';
 
 const expiryStrings: ExpiryString[] = [
     'ten_minutes',
@@ -39,4 +39,10 @@ export const actions: Actions = {
             result: 'SUCCESS',
         };
     },
+};
+
+export const load: PageServerLoad = ({ cookies }) => {
+    return {
+        backendUrl: cookies.get('backendUrl') || 'TODO',
+    };
 };

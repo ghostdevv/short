@@ -1,3 +1,9 @@
+<script lang="ts">
+    import type { PageData } from './$types';
+
+    export let data: PageData;
+</script>
+
 <section class="col">
     <h1>Settings</h1>
     <p>Don't worry, these autosave ;)</p>
@@ -8,10 +14,14 @@
 <section class="settings">
     <h2>General</h2>
 
-    <label>
-        Backend Url - Coming Soon
-        <input type="text" disabled />
-    </label>
+    <form method="POST" action="?/general">
+        <label>
+            Backend Url
+            <input type="text" name="backendUrl" value={data.backendUrl} />
+        </label>
+
+        <button>Save</button>
+    </form>
 </section>
 
 <section class="settings">
@@ -24,6 +34,15 @@
 </section>
 
 <style lang="scss">
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+
+        width: 100%;
+    }
+
     label {
         display: flex;
         flex-direction: column;
