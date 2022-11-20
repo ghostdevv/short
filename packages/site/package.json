@@ -12,6 +12,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@fortawesome/free-brands-svg-icons": "^6.2.1",
 		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",

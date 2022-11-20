@@ -1,6 +1,7 @@
 <script lang="ts">
     import 'ghostsui';
     import { faCog, faClose } from '@fortawesome/free-solid-svg-icons';
+    import { faGithub } from '@fortawesome/free-brands-svg-icons';
     import { page } from '$app/stores';
     import Fa from 'svelte-fa';
 
@@ -8,7 +9,14 @@
 </script>
 
 <nav>
-    <a href={settingsPage ? '/' : '/settings'} class="settings">
+    <a
+        href="https://github.com/ghostdevv/short"
+        target="_blank"
+        rel="noreferrer">
+        <Fa size="1.5x" icon={faGithub} />
+    </a>
+
+    <a href={settingsPage ? '/' : '/settings'}>
         <Fa size="1.5x" icon={settingsPage ? faClose : faCog} />
     </a>
 </nav>
@@ -24,9 +32,10 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        gap: 8px;
 
-        .settings {
-            padding: 16px;
+        a {
+            padding: 8px;
 
             color: rgba(var(--text-rgb), 0.6);
 
