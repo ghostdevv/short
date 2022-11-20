@@ -5,24 +5,24 @@ export const actions: Actions = {
     general: async ({ request, cookies }) => {
         const data = await request.formData();
 
-        const accountPhrase = data.get('accountPhrase');
+        const account = data.get('account');
 
-        if (typeof accountPhrase == 'string') {
-            const wordCount = accountPhrase
+        if (typeof account == 'string') {
+            const wordCount = account
                 .split(' ')
                 .filter((x) => x.trim().length > 0).length;
 
             if (wordCount != 24)
                 return invalid(400, {
-                    accountPhrase,
+                    account,
                     error: 'The account phrase must be 24 words',
                 });
 
-            cookies.set('accountPhrase', accountPhrase);
+            cookies.set('account', account);
         }
 
         return {
-            accountPhrase,
+            account,
         };
     },
 };

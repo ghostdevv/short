@@ -29,8 +29,8 @@
 
             <textarea
                 style="height: auto"
-                name="accountPhrase"
-                value={form?.accountPhrase || data?.account} />
+                name="account"
+                value={form?.account || data?.account} />
         </label>
 
         <button>Save</button>

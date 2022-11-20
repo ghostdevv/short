@@ -5,7 +5,7 @@ import { fetch } from '$lib/fetch';
 import urlJoin from 'url-join';
 
 export const actions: Actions = {
-    default: async ({ request, cookies }) => {
+    default: async ({ request, locals }) => {
         const data = await request.formData();
         const expiry = data.get('expiry');
         const link = data.get('link');
@@ -14,7 +14,7 @@ export const actions: Actions = {
             const data = await fetch<{ key: string }>(
                 urlJoin(PUBLIC_BACKEND_URL, '/create'),
                 {
-                    data: { expiry, link },
+                    data: { expiry, link, account: locals.account },
                     method: 'POST',
                     manual: true,
                 },
