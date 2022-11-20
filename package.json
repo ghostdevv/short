@@ -1,0 +1,8 @@
+{
+    "name": "short-monorepo",
+    "private": true,
+    "license": "MIT",
+    "scripts": {
+        "dev": "pnpm --parallel -r dev"
+    }
+}
