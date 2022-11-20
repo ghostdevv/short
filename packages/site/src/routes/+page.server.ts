@@ -1,48 +1,33 @@
 import type { PageServerLoad, Actions } from './$types';
-import type { ExpiryString } from '$lib/types';
 import { invalid } from '@sveltejs/kit';
-
-const expiryStrings: ExpiryString[] = [
-    'ten_minutes',
-    'thirty_minutes',
-    'one_hour',
-    'one_week',
-    'one_month',
-];
-
-function checkExpiry(expiry: string | null): expiry is ExpiryString {
-    return !!expiry && expiryStrings.includes(expiry as any);
-}
-
-function checkLink(link: string | null): link is string {
-    // TODO use regex to check it
-    return !!link;
-}
+import urlJoin from 'url-join';
+import { fetch } from '$lib/fetch';
 
 export const actions: Actions = {
-    default: async ({ request }) => {
+    default: async ({ request, cookies }) => {
         const data = await request.formData();
-
         const expiry = data.get('expiry');
         const link = data.get('link');
 
-        if (typeof expiry != 'string' || !checkExpiry(expiry)) {
-            return invalid(400, { expiry, link, error: 'Invalid Expiry' });
+        const backendUrl = cookies.get('backendUrl');
+
+        if (typeof backendUrl != 'string') {
+            return invalid(400, { expiry, link, error: 'Missing Backend URL' });
         }
 
-        if (typeof link != 'string' || !checkLink(link)) {
-            return invalid(400, { expiry, link, error: 'Invalid Link' });
-        }
+        try {
+            const data = await fetch<{ key: string }>(
+                urlJoin(backendUrl, '/create'),
+                {
+                    data: { expiry, link },
+                    method: 'POST',
+                    manual: true,
+                },
+            );
 
-        return {
-            success: true,
-            result: 'SUCCESS',
-        };
+            return { success: true, key: data.key };
+        } catch (e) {
+            return invalid(400, { expiry, link, error: e as string });
+        }
     },
-};
-
-export const load: PageServerLoad = ({ cookies }) => {
-    return {
-        backendUrl: cookies.get('backendUrl') || 'TODO',
-    };
 };

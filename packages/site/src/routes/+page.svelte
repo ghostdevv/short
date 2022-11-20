@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type { ActionData, PageData } from './$types';
+    import type { ActionData } from './$types';
+    import { page } from '$app/stores';
 
-    export let data: PageData;
     export let form: ActionData;
 </script>
 
@@ -41,9 +41,31 @@
     </form>
 </section>
 
-{data.backendUrl}
+{#if form?.success}
+    {@const url = `${$page.url.origin}/${form.key}`}
+
+    <section class="col card no-hover">
+        <h2 class="success">Success!</h2>
+        <a href={url} target="_blank" rel="noreferrer">{url}</a>
+    </section>
+{/if}
+
+{#if form?.error}
+    <section class="col card no-hover">
+        <h2 class="error">Error!</h2>
+        <p>{form.error}</p>
+    </section>
+{/if}
 
 <style lang="scss">
+    .success {
+        color: var(--green);
+    }
+
+    .error {
+        color: var(--red);
+    }
+
     .link-form {
         display: flex;
         flex-direction: column;
