@@ -6,17 +6,17 @@ A foss, self hostable, and private link shortener. Every element of the shortner
 
 ## Frontend
 
-The frontend wraps the backend to make it easy to use Short, you can host this component using Cloudflare pages. The frontend supports setting a custom backend URL so you can use the public instance (https://short.willow.sh/) with your own backend.
+The frontend wraps the backend to make it easy to use Short, you can host this component using Cloudflare pages.
 
 ### Hosting Yourself
 
 The first step is to fork this repo, then connect to it on [Cloudflare pages](https://dash.cloudflare.com/?to=/:account/pages). You should use the following deploy settings:
 
-![Build settings image](https://i.imgur.com/NeUzQzN.png)
+![Build settings image](https://i.imgur.com/8lwavcZ.png)
 
 ## Backend
 
-The backend is what stores your keys and links. You can host this component using [Cloudflare workers](https://dash.cloudflare.com/?to=/:account/workers). Since the frontend supports setting a custom backend URL you can use the public frontend instance (https://short.willow.sh/) with your own backend.
+The backend is what stores your keys and links. You can host this component using [Cloudflare workers](https://dash.cloudflare.com/?to=/:account/workers).
 
 ### Hosting Yourself
 
