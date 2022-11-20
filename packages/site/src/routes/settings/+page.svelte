@@ -8,7 +8,7 @@
 
 <section class="col">
     <h1>Settings</h1>
-    <p>Don't worry, these autosave ;)</p>
+    <p>Customise Short to be your own</p>
 </section>
 
 <hr />
