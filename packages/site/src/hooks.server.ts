@@ -4,11 +4,11 @@ import { fetch } from '$lib/fetch';
 async function getAccount(potential?: string) {
     if (typeof potential != 'string' || !potential.trim().length) {
         try {
-            const phrase = await fetch<string[]>(
-                'https://mnemonic.willow.sh/new',
+            const { uuid } = await fetch<{ uuid: string }>(
+                'https://uuid.rocks/json',
             );
 
-            return phrase.join(' ');
+            return uuid;
         } catch (e) {
             throw error(500, `${e}`);
         }

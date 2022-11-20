@@ -25,10 +25,10 @@
 
     <form method="POST" action="?/general" use:enhance>
         <label>
-            Account Phrase
+            Account UUID
 
-            <textarea
-                style="height: auto"
+            <input
+                type="text"
                 name="account"
                 value={form?.account || data?.account} />
         </label>

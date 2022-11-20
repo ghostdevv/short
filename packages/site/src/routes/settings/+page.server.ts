@@ -8,14 +8,13 @@ export const actions: Actions = {
         const account = data.get('account');
 
         if (typeof account == 'string') {
-            const wordCount = account
-                .split(' ')
-                .filter((x) => x.trim().length > 0).length;
+            const uuidRegex =
+                /^(?:[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-4[0-9A-Za-z]{3}-[89ABab][0-9A-Za-z]{3}-[0-9A-Za-z]{12})/;
 
-            if (wordCount != 24)
+            if (!account.match(uuidRegex))
                 return invalid(400, {
                     account,
-                    error: 'The account phrase must be 24 words',
+                    error: 'The account UUID must be a valid UUID',
                 });
 
             cookies.set('account', account);
