@@ -12,6 +12,7 @@ async function getRedirectUrl(backendUrl: string, key: string) {
         return data.link;
     } catch (e) {
         console.log('Error redirecting', e);
+
         throw error(400, {
             message: e as string,
         });
