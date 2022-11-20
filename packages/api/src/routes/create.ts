@@ -10,6 +10,7 @@ import z from 'zod';
 const schema = z.object({
     link: z.string().url(),
     expiry: z.enum(expiryStrings),
+    account: z.string().uuid(),
 });
 
 async function generateKey(LINKS: KV.Namespace): Promise<string> {
@@ -30,16 +31,20 @@ export default route(async (request, context) => {
         });
 
     const expiresAt = resolveExpiry(result.data.expiry);
+    const account = result.data.account;
     const link = result.data.link;
 
     const key = await generateKey(context.bindings.LINKS);
 
     await write<Link>(context.bindings.LINKS, key, {
-        type: LinkType.Basic,
         key,
         link,
+        account,
         expiresAt,
+        type: LinkType.Basic,
     });
+
+    await write(context.bindings.LINKS_MAP, `${account}:${key}`, '');
 
     return reply(201, { key });
 });
