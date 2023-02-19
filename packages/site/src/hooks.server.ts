@@ -1,4 +1,4 @@
-import { MemoryStorage } from '@miniflare/storage-memory';
+import { FileStorage } from '@miniflare/storage-file';
 import { KVNamespace as KV } from '@miniflare/kv';
 import type { Handle } from '@sveltejs/kit';
 import { dev } from '$app/environment';
@@ -17,7 +17,7 @@ async function getAccount(potential?: string) {
 }
 
 function kv() {
-    return new KV(new MemoryStorage()) as KVNamespace;
+    return new KV(new FileStorage('./.mf')) as KVNamespace;
 }
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -27,8 +27,12 @@ export const handle: Handle = async ({ event, resolve }) => {
     event.cookies.set('account', account);
 
     if (dev) {
-        event.platform.env.LINKS = kv();
-        event.platform.env.LINKS_MAP = kv();
+        event.platform ??= {
+            env: {
+                LINKS: kv(),
+                LINKS_MAP: kv(),
+            },
+        };
     }
 
     return resolve(event);
