@@ -17,7 +17,9 @@ export const actions: Actions = {
                     error: 'The account UUID must be a valid UUID',
                 });
 
-            cookies.set('account', account);
+            cookies.set('account', account, {
+                path: '/',
+            });
         }
 
         return {
