@@ -1,0 +1,6 @@
+compatibility_date = "2023-02-19"
+
+kv_namespaces = [
+    { binding = "LINKS", id = "7362a4ae21a94266819b37315cf53f71", preview_id = "40ea361eba4748a7918043329600a641" },
+    { binding = "LINKS_MAP", id = "a3ee90971a0f4ce2bfc24ac9491b2ab4", preview_id = "ab2fcb2a5dba4d80ae66ab307ed3b462" }
+]
