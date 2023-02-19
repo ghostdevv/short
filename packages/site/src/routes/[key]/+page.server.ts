@@ -1,13 +1,19 @@
-import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import type { PageServerLoad } from './$types';
-import { redirect } from '@sveltejs/kit';
-import { fetch } from '$lib/fetch';
-import urlJoin from 'url-join';
+import { error, redirect } from '@sveltejs/kit';
+import type { Link } from '$lib/types';
 
-export const load: PageServerLoad = async ({ params, cookies }) => {
-    const { link } = await fetch<{ link: string }>(
-        urlJoin(PUBLIC_BACKEND_URL, '/get', params.key),
-    );
+export const load: PageServerLoad = async ({ params, platform }) => {
+    if (!platform) throw error(500, 'Platform not found');
 
-    throw redirect(307, link);
+    const raw = await platform.env.LINKS.get(params.key);
+    if (!raw) throw error(404, 'Requested key does not exist');
+
+    const result: Link = JSON.parse(raw);
+
+    if (result.expiresAt <= Date.now()) {
+        await platform.env.LINKS.delete(params.key);
+        return error(404, 'Requested key does not exist');
+    }
+
+    throw redirect(307, result.link);
 };

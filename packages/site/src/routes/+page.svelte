@@ -21,7 +21,6 @@
             <input
                 type="url"
                 required
-                value={form?.link ?? ''}
                 placeholder="https://example.com"
                 name="link" />
         </label>
@@ -29,7 +28,7 @@
         <label>
             When should it expire?
 
-            <select name="expiry" value={form?.expiry ?? 'one_month'} required>
+            <select name="expiry" value={'one_month'} required>
                 <option value="one_month">1 Month</option>
                 <option value="one_week">1 Week</option>
                 <option value="one_hour">1 Hour</option>
