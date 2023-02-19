@@ -11,11 +11,20 @@ export const actions: Actions = {
         const expiry = data.get('expiry');
         const link = data.get('link');
 
-        const result = linkSchema.safeParse({
+        const result = await linkSchema.safeParseAsync({
             account: locals.account,
             expiry,
             link,
         });
+
+        if (!result.success) {
+            const errors = result.error.flatten();
+
+            return fail(400, {
+                fieldErrors: errors.fieldErrors,
+                success: false,
+            });
+        }
 
         // try {
         //     const data = await fetch<{ key: string }>(
