@@ -14,7 +14,6 @@ export const actions: Actions = {
             if (!result.success)
                 return fail(400, {
                     error: 'The account UUID must be a valid UUID',
-                    account,
                 });
 
             cookies.set('account', account, {
@@ -22,8 +21,6 @@ export const actions: Actions = {
             });
         }
 
-        return {
-            account,
-        };
+        return {};
     },
 };

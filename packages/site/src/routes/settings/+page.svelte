@@ -4,6 +4,8 @@
 
     export let data: PageData;
     export let form: ActionData;
+
+    let disabled = false;
 </script>
 
 <section class="col">
@@ -23,17 +25,27 @@
 <section class="settings">
     <h2>General</h2>
 
-    <form method="POST" action="?/general" use:enhance>
+    <form
+        method="POST"
+        action="?/general"
+        use:enhance={() => {
+            disabled = true;
+            return async ({ update }) => {
+                disabled = false;
+                await update({ reset: false });
+            };
+        }}>
         <label>
             Account UUID
 
             <input
                 type="text"
                 name="account"
-                value={form?.account || data?.account} />
+                value={data?.account}
+                {disabled} />
         </label>
 
-        <button>Save</button>
+        <button {disabled}>Save</button>
     </form>
 </section>
 
