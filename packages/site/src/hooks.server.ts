@@ -16,8 +16,8 @@ async function getAccount(potential?: string) {
     return potential;
 }
 
-function kv() {
-    return new KV(new FileStorage('./.mf')) as KVNamespace;
+function kv(name: string) {
+    return new KV(new FileStorage(`./.mf/${name}`)) as KVNamespace;
 }
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -29,8 +29,8 @@ export const handle: Handle = async ({ event, resolve }) => {
     if (dev) {
         event.platform ??= {
             env: {
-                LINKS: kv(),
-                LINKS_MAP: kv(),
+                LINKS: kv('LINKS'),
+                LINKS_MAP: kv('LINKS_MAP'),
             },
         };
     }
