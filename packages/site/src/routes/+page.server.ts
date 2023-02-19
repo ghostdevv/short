@@ -1,6 +1,6 @@
-import { PUBLIC_BACKEND_URL } from '$env/static/public';
+// import { PUBLIC_BACKEND_URL } from '$env/static/public';
 import type { Actions } from './$types';
-import { invalid } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 import { fetch } from '$lib/fetch';
 import urlJoin from 'url-join';
 
@@ -15,7 +15,7 @@ export const actions: Actions = {
                 urlJoin(PUBLIC_BACKEND_URL, '/create'),
                 {
                     data: { expiry, link, account: locals.account },
-                    
+
                     method: 'POST',
                     manual: true,
                 },
@@ -23,7 +23,7 @@ export const actions: Actions = {
 
             return { success: true, key: data.key };
         } catch (e) {
-            return invalid(400, { expiry, link, error: e as string });
+            return fail(400, { expiry, link, error: e as string });
         }
     },
 };

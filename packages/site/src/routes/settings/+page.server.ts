@@ -1,5 +1,5 @@
-import { invalid } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import { fail } from '@sveltejs/kit';
 
 export const actions: Actions = {
     general: async ({ request, cookies }) => {
@@ -12,7 +12,7 @@ export const actions: Actions = {
                 /^(?:[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-4[0-9A-Za-z]{3}-[89ABab][0-9A-Za-z]{3}-[0-9A-Za-z]{12})/;
 
             if (!account.match(uuidRegex))
-                return invalid(400, {
+                return fail(400, {
                     account,
                     error: 'The account UUID must be a valid UUID',
                 });
