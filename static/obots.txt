@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /changelog
+Allow: /account
+Allow: /settings
+Disallow: /*
