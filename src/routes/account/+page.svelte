@@ -36,6 +36,8 @@
                 </a>
             </div>
         </div>
+    {:else}
+        <p>You don't have any links yet!</p>
     {/each}
 </section>
 
