@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { themeColour, textColour } from '$lib/settings';
     import type { ActionData, PageData } from './$types';
     import { enhance } from '$app/forms';
 
@@ -53,8 +54,21 @@
     <h2>Personalisation</h2>
 
     <label>
-        Theme Colour - Coming Soon
-        <input type="color" disabled />
+        Theme Colour
+
+        <div class="row">
+            <input type="color" bind:value={$themeColour} />
+            <button on:click={() => ($themeColour = '#2160ec')}> Reset </button>
+        </div>
+    </label>
+
+    <label>
+        Text Colour
+
+        <div class="row">
+            <input type="color" bind:value={$textColour} />
+            <button on:click={() => ($textColour = '#eeeeee')}>Reset</button>
+        </div>
     </label>
 </section>
 
@@ -83,5 +97,9 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+    }
+
+    .row {
+        align-items: center;
     }
 </style>
