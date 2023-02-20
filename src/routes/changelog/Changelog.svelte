@@ -1,6 +1,7 @@
 <h1>v2.1.1</h1>
 <ul>
 <li>Add robots.txt</li>
+<li>Fix colours</li>
 </ul>
 
 <h1>v2.1.0</h1>

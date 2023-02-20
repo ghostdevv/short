@@ -1,6 +1,7 @@
 # v2.1.1
 
 -   Add robots.txt
+-   Fix colours
 
 # v2.1.0
 

@@ -15,6 +15,7 @@
 
     $: if (browser && ($themeColour || $textColour)) {
         document.documentElement.style.setProperty('--primary', $themeColour);
+        document.documentElement.style.setProperty('--secondary', $themeColour);
 
         document.documentElement.style.setProperty(
             '--primary-hover',
