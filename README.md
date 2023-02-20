@@ -8,6 +8,10 @@ A foss, self hostable, and private link shortener. Every element of the shortner
 
 In v2 we removed the need for a seperate backend cf worker. After you migrate the frontend you can just delete the worker, since all your data is in KV you won't lose anything or have any migration for it.
 
+To migrate you should update your fork, and add the following KV under the functions settings of your pages project:
+
+![](https://i.imgur.com/C33xfMw.png)
+
 # Self Host
 
 The first step is to fork this repo, then connect to it on [Cloudflare pages](https://dash.cloudflare.com/?to=/:account/pages). You should use the following deploy settings:
