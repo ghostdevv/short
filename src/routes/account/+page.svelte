@@ -7,6 +7,10 @@
     import { page } from '$app/stores';
 
     export let data: PageData;
+
+    function truncateLink(link: string) {
+        return link.length > 30 ? `${link.slice(0, 30)}...` : link;
+    }
 </script>
 
 <section class="col">
@@ -24,7 +28,7 @@
     {#each data.links as { key, link }}
         <div class="card no-hover link">
             <h2>{key}</h2>
-            <h5>{link}</h5>
+            <h5>{truncateLink(link)}</h5>
 
             <div class="buttons">
                 <button class="button" use:copy={`${$page.url.origin}/${key}`}>
