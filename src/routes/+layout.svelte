@@ -2,6 +2,7 @@
     import 'ghostsui';
     import { faCog, faClose, faUser } from '@fortawesome/free-solid-svg-icons';
     import { faGithub } from '@fortawesome/free-brands-svg-icons';
+    import { faScroll } from '@fortawesome/free-solid-svg-icons';
     import { textColour, themeColour } from '$lib/settings';
     import { lightenColour } from '$lib/colour';
     import { browser } from '$app/environment';
@@ -24,19 +25,22 @@
 </script>
 
 <nav>
-    <a
-        href="https://github.com/ghostdevv/short"
-        target="_blank"
-        rel="noreferrer">
-        <Fa size="1.5x" icon={faGithub} />
-    </a>
+    <div class="buttons">
+        <a
+            href="https://github.com/ghostdevv/short"
+            target="_blank"
+            rel="noreferrer"
+            title="GitHub">
+            <Fa size="1.5x" icon={faGithub} />
+        </a>
+    </div>
 
     <div class="buttons">
-        <a href={accountPage ? '/' : '/account'}>
+        <a href={accountPage ? '/' : '/account'} title="Account">
             <Fa size="1.4x" icon={accountPage ? faClose : faUser} />
         </a>
 
-        <a href={settingsPage ? '/' : '/settings'}>
+        <a href={settingsPage ? '/' : '/settings'} title="Settings">
             <Fa size="1.5x" icon={settingsPage ? faClose : faCog} />
         </a>
     </div>
