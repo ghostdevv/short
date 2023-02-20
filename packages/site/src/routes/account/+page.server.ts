@@ -5,8 +5,7 @@ import { error } from '@sveltejs/kit';
 type PartialLink = Pick<Link, 'key' | 'link'>;
 
 export const load: PageServerLoad = async ({ locals, platform }) => {
-    if (!platform || !platform.env.LINKS || !platform.env.LINKS_MAP)
-        throw error(500, 'Platform not found');
+    if (!platform) throw error(500, 'Platform not found');
 
     const keys: string[] = [];
     let cursor: string = '';
