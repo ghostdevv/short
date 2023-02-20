@@ -9,6 +9,7 @@
     import { page } from '$app/stores';
     import Fa from 'svelte-fa';
 
+    $: changelogPage = $page.url.pathname.startsWith('/changelog');
     $: settingsPage = $page.url.pathname.startsWith('/settings');
     $: accountPage = $page.url.pathname.startsWith('/account');
 
@@ -32,6 +33,10 @@
             rel="noreferrer"
             title="GitHub">
             <Fa size="1.5x" icon={faGithub} />
+        </a>
+
+        <a href={changelogPage ? '/' : '/changelog'} title="Changelog">
+            <Fa size="1.5x" icon={changelogPage ? faClose : faScroll} />
         </a>
     </div>
 
