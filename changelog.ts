@@ -7,7 +7,7 @@ let html = marked(changelog, {
     headerIds: false,
 });
 
-html = html.replace(/<\/ul>/, '</ul>\n');
+html = html.replace(/<\/ul>/g, '</ul>\n');
 
 console.log('===================================');
 console.log(html.trim());
