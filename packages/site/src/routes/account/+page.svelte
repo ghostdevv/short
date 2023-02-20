@@ -11,9 +11,10 @@
 
 <section class="col">
     <h1>Account</h1>
+
     <p>
-        Don't forget to write down your account uuid from settings! Below are
-        your short links
+        Don't forget to write down your <a href="/settings">account uuid</a> if you
+        want to keep track of your links!
     </p>
 </section>
 
