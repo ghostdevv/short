@@ -1,5 +1,3 @@
-import { FileStorage } from '@miniflare/storage-file';
-import { KVNamespace as KV } from '@miniflare/kv';
 import type { Handle } from '@sveltejs/kit';
 import { v4 as uuid } from '@lukeed/uuid';
 import { dev } from '$app/environment';
@@ -12,7 +10,10 @@ function getAccount(potential?: string) {
     return potential;
 }
 
-function kv(name: string) {
+async function kv(name: string) {
+    const { FileStorage } = await import('@miniflare/storage-file');
+    const { KVNamespace: KV } = await import('@miniflare/kv');
+
     return new KV(new FileStorage(`./.mf/${name}`)) as KVNamespace;
 }
 
@@ -25,8 +26,8 @@ export const handle: Handle = async ({ event, resolve }) => {
     if (dev) {
         event.platform ??= {
             env: {
-                LINKS: kv('LINKS'),
-                LINKS_MAP: kv('LINKS_MAP'),
+                LINKS: await kv('LINKS'),
+                LINKS_MAP: await kv('LINKS_MAP'),
             },
         };
     }
