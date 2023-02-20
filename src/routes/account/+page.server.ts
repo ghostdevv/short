@@ -32,6 +32,7 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 
         if (result.expiresAt <= Date.now()) {
             await platform.env.LINKS.delete(key);
+            continue;
         }
 
         links.push({ key, link: result.link });
