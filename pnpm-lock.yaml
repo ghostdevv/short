@@ -29,6 +29,7 @@ importers:
       '@cloudflare/workers-types': ^4.20230215.0
       '@fortawesome/free-brands-svg-icons': ^6.3.0
       '@fortawesome/free-solid-svg-icons': ^6.3.0
+      '@lukeed/uuid': ^2.0.0
       '@miniflare/kv': ^2.12.0
       '@miniflare/storage-file': ^2.12.0
       '@sveltejs/adapter-auto': ^2.0.0
@@ -52,6 +53,7 @@ importers:
       '@cloudflare/workers-types': 4.20230215.0
       '@fortawesome/free-brands-svg-icons': 6.3.0
       '@fortawesome/free-solid-svg-icons': 6.3.0
+      '@lukeed/uuid': 2.0.0
       '@miniflare/kv': 2.12.0
       '@miniflare/storage-file': 2.12.0
       '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.7.2
@@ -538,6 +540,18 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
+    dev: true
+
+  /@lukeed/csprng/1.0.1:
+    resolution: {integrity: sha512-uSvJdwQU5nK+Vdf6zxcWAY2A8r7uqe+gePwLWzJ+fsQehq18pc0I2hJKwypZ2aLM90+Er9u1xn4iLJPZ+xlL4g==}
+    engines: {node: '>=8'}
+    dev: true
+
+  /@lukeed/uuid/2.0.0:
+    resolution: {integrity: sha512-dUz8OmYvlY5A9wXaroHIMSPASpSYRLCqbPvxGSyHguhtTQIy24lC+EGxQlwv71AhRCO55WOtgwhzQLpw27JaJQ==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@lukeed/csprng': 1.0.1
     dev: true
 
   /@miniflare/cache/2.12.0:
