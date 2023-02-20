@@ -9,7 +9,7 @@
     export let data: PageData;
 
     function truncateLink(link: string) {
-        return link.length > 30 ? `${link.slice(0, 30)}...` : link;
+        return link.length > 50 ? `${link.slice(0, 50)}...` : link;
     }
 </script>
 
