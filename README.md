@@ -8,7 +8,7 @@ A foss, self hostable, and private link shortener. Every element of the shortner
 
 In v2 we removed the need for a seperate backend cf worker. After you migrate the frontend you can just delete the worker, since all your data is in KV you won't lose anything or have any migration for it.
 
-To migrate you should update your fork, and add the following KV under the functions settings of your pages project:
+To migrate you should update your fork, and add the following KV under `Settings > Functions > KV namespace bindings` of your pages project:
 
 ![Functions KV Bindings](https://i.imgur.com/C33xfMw.png)
 
@@ -24,4 +24,10 @@ To migrate you should update your fork, and add the following KV under the funct
 
     Fork this repo and connect it to [Cloudflare pages](https://dash.cloudflare.com/?to=/:account/pages). You should use the following deploy settings:
 
-    ![Build settings image](blob:https://imgur.com/064b4ea3-946f-4095-b65d-61c50e65eac9)
+    ![Build settings image](https://i.imgur.com/RGr41rU.png)
+
+3. Add the KV Bindings to your Pages project
+
+    On pages under `Settings > Functions > KV namespace bindings` you need to add the following `LINKS` and `LINKS_MAP` variables for preview and production. They must be named exactly otherwise they won't work
+
+    ![Functions KV Bindings](https://i.imgur.com/C33xfMw.png)
