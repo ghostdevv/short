@@ -1,23 +1,33 @@
 # Short
 
-A foss, self hostable, and private link shortener. Every element of the shortner is self-hostable for free using Cloudflare.
+A foss, self hostable, and private link shortener. Every element of the shortner is self-hostable for **free** using Cloudflare.
 
 > ### Public instance available here: https://short.willow.sh/
 
-## Frontend
+# Migrating to v2
 
-The frontend wraps the backend to make it easy to use Short, you can host this component using Cloudflare pages.
+In v2 we removed the need for a seperate backend cf worker. After you migrate the frontend you can just delete the worker, since all your data is in KV you won't lose anything or have any migration for it.
 
-### Hosting Yourself
+To migrate you should update your fork, and add the following KV under `Settings > Functions > KV namespace bindings` of your pages project:
 
-The first step is to fork this repo, then connect to it on [Cloudflare pages](https://dash.cloudflare.com/?to=/:account/pages). You should use the following deploy settings:
+![Functions KV Bindings](https://i.imgur.com/C33xfMw.png)
 
-![Build settings image](https://i.imgur.com/8lwavcZ.png)
+# Self Host
 
-## Backend
+1. Create KV Namespaces
 
-The backend is what stores your keys and links. You can host this component using [Cloudflare workers](https://dash.cloudflare.com/?to=/:account/workers).
+    You need to create two KV Namespaces for short, you can [do that here](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces). They can be named anything but I chose `SHORT_LINKS` and `SHORT_LINKS_MAP`.
 
-### Hosting Yourself
+    ![kv namespaces](https://i.imgur.com/JXFSXk9.png)
 
-The first step is to fork this repo. You will need to update the `packages/api/wrangler.toml` file with your account id (can be found in the url bar), and id for your [KV namespace](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces). If you don't want automated deploys you can run `pnpm run deploy` in `packages/api`. Otherwise you will need to create a [Cloudflare API token](https://dash.cloudflare.com/profile/api-tokens) and add it as an action secret on your repo for `CLOUDFLARE_API_TOKEN`. You can then trigger the deploy workflow to run by going on `Actions` > `Release API` > `Run Workflow`.
+2. Hosting on Cloudflare Pages
+
+    Fork this repo and connect it to [Cloudflare pages](https://dash.cloudflare.com/?to=/:account/pages). You should use the following deploy settings:
+
+    ![Build settings image](https://i.imgur.com/RGr41rU.png)
+
+3. Add the KV Bindings to your Pages project
+
+    On pages under `Settings > Functions > KV namespace bindings` you need to add the following `LINKS` and `LINKS_MAP` variables for preview and production. They must be named exactly otherwise they won't work
+
+    ![Functions KV Bindings](https://i.imgur.com/C33xfMw.png)

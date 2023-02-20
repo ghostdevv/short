@@ -1,10 +1,3 @@
-export type ExpiryString =
-    | 'ten_minutes'
-    | 'thirty_minutes'
-    | 'one_hour'
-    | 'one_week'
-    | 'one_month';
-
 export const expiryStrings = [
     'ten_minutes',
     'thirty_minutes',
@@ -12,6 +5,8 @@ export const expiryStrings = [
     'one_week',
     'one_month',
 ] as const;
+
+export type ExpiryString = typeof expiryStrings[number];
 
 export function resolveExpiry(expiry: ExpiryString): number {
     const now = Date.now();

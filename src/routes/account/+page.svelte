@@ -7,13 +7,18 @@
     import { page } from '$app/stores';
 
     export let data: PageData;
+
+    function truncateLink(link: string) {
+        return link.length > 50 ? `${link.slice(0, 50)}...` : link;
+    }
 </script>
 
 <section class="col">
     <h1>Account</h1>
+
     <p>
-        Don't forget to write down your account uuid from settings! Below are
-        your short links
+        Don't forget to write down your <a href="/settings">account uuid</a> if you
+        want to keep track of your links!
     </p>
 </section>
 
@@ -23,7 +28,7 @@
     {#each data.links as { key, link }}
         <div class="card no-hover link">
             <h2>{key}</h2>
-            <h5>{link}</h5>
+            <h5>{truncateLink(link)}</h5>
 
             <div class="buttons">
                 <button class="button" use:copy={`${$page.url.origin}/${key}`}>
@@ -35,6 +40,8 @@
                 </a>
             </div>
         </div>
+    {:else}
+        <p>You don't have any links yet!</p>
     {/each}
 </section>
 

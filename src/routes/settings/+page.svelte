@@ -1,9 +1,12 @@
 <script lang="ts">
+    import { themeColour, textColour } from '$lib/settings';
     import type { ActionData, PageData } from './$types';
     import { enhance } from '$app/forms';
 
     export let data: PageData;
     export let form: ActionData;
+
+    let disabled = false;
 </script>
 
 <section class="col">
@@ -23,17 +26,27 @@
 <section class="settings">
     <h2>General</h2>
 
-    <form method="POST" action="?/general" use:enhance>
+    <form
+        method="POST"
+        action="?/general"
+        use:enhance={() => {
+            disabled = true;
+            return async ({ update }) => {
+                disabled = false;
+                await update({ reset: false });
+            };
+        }}>
         <label>
             Account UUID
 
             <input
                 type="text"
                 name="account"
-                value={form?.account || data?.account} />
+                value={data?.account}
+                {disabled} />
         </label>
 
-        <button>Save</button>
+        <button {disabled}>Save</button>
     </form>
 </section>
 
@@ -41,8 +54,21 @@
     <h2>Personalisation</h2>
 
     <label>
-        Theme Colour - Coming Soon
-        <input type="color" disabled />
+        Theme Colour
+
+        <div class="row">
+            <input type="color" bind:value={$themeColour} />
+            <button on:click={() => ($themeColour = '#2160ec')}> Reset </button>
+        </div>
+    </label>
+
+    <label>
+        Text Colour
+
+        <div class="row">
+            <input type="color" bind:value={$textColour} />
+            <button on:click={() => ($textColour = '#eeeeee')}>Reset</button>
+        </div>
     </label>
 </section>
 
@@ -71,5 +97,9 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+    }
+
+    .row {
+        align-items: center;
     }
 </style>

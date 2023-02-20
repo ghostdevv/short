@@ -2,11 +2,25 @@
     import 'ghostsui';
     import { faCog, faClose, faUser } from '@fortawesome/free-solid-svg-icons';
     import { faGithub } from '@fortawesome/free-brands-svg-icons';
+    import { textColour, themeColour } from '$lib/settings';
+    import { lightenColour } from '$lib/colour';
+    import { browser } from '$app/environment';
     import { page } from '$app/stores';
     import Fa from 'svelte-fa';
 
     $: settingsPage = $page.url.pathname.startsWith('/settings');
     $: accountPage = $page.url.pathname.startsWith('/account');
+
+    $: if (browser && ($themeColour || $textColour)) {
+        document.documentElement.style.setProperty('--primary', $themeColour);
+
+        document.documentElement.style.setProperty(
+            '--primary-hover',
+            lightenColour($themeColour, 0.15),
+        );
+
+        document.documentElement.style.setProperty('--text', $textColour);
+    }
 </script>
 
 <nav>
