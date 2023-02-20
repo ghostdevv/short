@@ -32,7 +32,6 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 
         if (result.expiresAt <= Date.now()) {
             await platform.env.LINKS.delete(key);
-            throw error(404, 'Requested key does not exist');
         }
 
         links.push({ key, link: result.link });
