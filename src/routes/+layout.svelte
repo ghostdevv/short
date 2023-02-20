@@ -16,7 +16,7 @@
 
         document.documentElement.style.setProperty(
             '--primary-hover',
-            lightenColour($themeColour, 30),
+            lightenColour($themeColour, 0.15),
         );
 
         document.documentElement.style.setProperty('--text', $textColour);

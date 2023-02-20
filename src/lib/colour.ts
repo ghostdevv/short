@@ -1,5 +1,5 @@
 // gotta love chatgpt
-export function lightenHex(hex: string, amount: number): string {
+export function lightenColour(hex: string, amount: number): string {
     // Remove the hash character if it's present
     hex = hex.replace('#', '');
 
