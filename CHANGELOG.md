@@ -1,3 +1,7 @@
+# v2.1.1
+
+-   Add robots.txt
+
 # v2.1.0
 
 -   Add Changelog
