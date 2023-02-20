@@ -1,3 +1,8 @@
+# v2.1.0
+
+-   Add Changelog
+-   Tooltips on nav items
+
 # v2.0.0
 
 -   Update deps

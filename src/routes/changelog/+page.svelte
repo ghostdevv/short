@@ -10,6 +10,12 @@
 <hr />
 
 <section class="col changelog">
+    <h1>v2.1.0</h1>
+    <ul>
+        <li>Add Changelog</li>
+        <li>Tooltips on nav items</li>
+    </ul>
+
     <h1>v2.0.0</h1>
     <ul>
         <li>Update deps</li>
