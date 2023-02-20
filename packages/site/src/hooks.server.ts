@@ -1,4 +1,4 @@
-import type { Handle } from '@sveltejs/kit';
+import { error, type Handle } from '@sveltejs/kit';
 import { v4 as uuid } from '@lukeed/uuid';
 import { dev } from '$app/environment';
 
@@ -31,6 +31,9 @@ export const handle: Handle = async ({ event, resolve }) => {
             },
         };
     }
+
+    if (!event.platform?.env.LINKS || !event.platform?.env.LINKS_MAP)
+        throw error(500, 'Platform not found');
 
     return resolve(event);
 };
