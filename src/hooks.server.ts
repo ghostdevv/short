@@ -1,6 +1,6 @@
 import { error, type Handle } from '@sveltejs/kit';
+import { dev, building } from '$app/environment';
 import { v4 as uuid } from '@lukeed/uuid';
-import { dev } from '$app/environment';
 
 function getAccount(potential?: string) {
     if (typeof potential != 'string' || !potential.trim().length) {
@@ -32,7 +32,10 @@ export const handle: Handle = async ({ event, resolve }) => {
         };
     }
 
-    if (!event.platform?.env.LINKS || !event.platform?.env.LINKS_MAP)
+    if (
+        !building &&
+        (!event.platform?.env.LINKS || !event.platform?.env.LINKS_MAP)
+    )
         throw error(500, 'Platform not found');
 
     return resolve(event);
