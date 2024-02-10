@@ -3,14 +3,17 @@ import { error } from '@sveltejs/kit';
 
 type PartialLink = Pick<Link, 'key' | 'link'>;
 
-export const load = async ({ platform }) => {
+export const load = async ({ platform, locals }) => {
     if (!platform) error(500, 'Platform not found');
 
     const keys: string[] = [];
     let cursor: string = '';
 
     while (true) {
-        const results = await platform.env.LINKS_MAP.list({ cursor });
+        const results = await platform.env.LINKS_MAP.list({
+            prefix: locals.account,
+            cursor,
+        });
 
         keys.push(...results.keys.map((key) => key.name.split(':')[1]));
 
