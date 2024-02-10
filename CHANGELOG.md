@@ -1,3 +1,7 @@
+# v2.3.0
+
+- Prevent robots indexing a short link
+
 # v2.2.0
 
 - Add title to page
