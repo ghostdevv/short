@@ -1,3 +1,8 @@
+# v2.1.2
+
+-   Update deps
+-   Fix bug leaking links
+
 # v2.1.1
 
 -   Add robots.txt
