@@ -4,7 +4,7 @@ import { error } from '@sveltejs/kit';
 
 type PartialLink = Pick<Link, 'key' | 'link'>;
 
-export const load = async ({ platform, locals }) => {
+export async function load({ platform, locals }) {
     if (!platform) error(500, 'Platform not found');
 
     const keys: string[] = [];
@@ -38,4 +38,4 @@ export const load = async ({ platform, locals }) => {
     return {
         links,
     };
-};
+}

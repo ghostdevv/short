@@ -1,12 +1,12 @@
 <script lang="ts">
     import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
     import { faClipboard } from '@fortawesome/free-solid-svg-icons';
-    import type { PageData } from './$types';
+
     import { copy } from 'svelte-copy';
     import Fa from 'svelte-fa';
     import { page } from '$app/stores';
 
-    export let data: PageData;
+    export let data;
 
     function truncateLink(link: string) {
         return link.length > 50 ? `${link.slice(0, 50)}...` : link;

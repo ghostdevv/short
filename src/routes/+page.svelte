@@ -1,9 +1,8 @@
 <script lang="ts">
-    import type { ActionData } from './$types';
     import { enhance } from '$app/forms';
     import { page } from '$app/stores';
 
-    export let form: ActionData;
+    export let form;
 </script>
 
 <section class="col">

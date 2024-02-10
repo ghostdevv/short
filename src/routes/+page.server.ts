@@ -1,7 +1,6 @@
 import { LinkType, type Link } from '$lib/types';
 import { resolveExpiry } from '$lib/expiry';
 import { linkSchema } from '$lib/schema';
-import type { Actions } from './$types';
 import { fail } from '@sveltejs/kit';
 import { nanoid } from 'nanoid';
 
@@ -12,7 +11,7 @@ async function generateKey(LINKS: KVNamespace): Promise<string> {
     return exists ? await generateKey(LINKS) : key;
 }
 
-export const actions: Actions = {
+export const actions = {
     default: async ({ request, locals, platform }) => {
         if (!platform)
             return fail(500, {
