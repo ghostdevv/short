@@ -28,7 +28,7 @@ export async function load({ platform, locals }) {
     const links: PartialLink[] = [];
 
     for (const key of keys) {
-        const link = await getLink(platform.env.LINKS, key);
+        const link = await getLink(platform, key);
 
         if (link) {
             links.push({ key, link: link.link });
