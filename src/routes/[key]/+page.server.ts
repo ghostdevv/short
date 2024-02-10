@@ -3,10 +3,10 @@ import { error, redirect } from '@sveltejs/kit';
 import type { Link } from '$lib/types';
 
 export const load: PageServerLoad = async ({ params, platform }) => {
-    if (!platform) throw error(500, 'Platform not found');
+    if (!platform) error(500, 'Platform not found');
 
     const raw = await platform.env.LINKS.get(params.key);
-    if (!raw) throw error(404, 'Requested key does not exist');
+    if (!raw) error(404, 'Requested key does not exist');
 
     const result: Link = JSON.parse(raw);
 
@@ -15,5 +15,5 @@ export const load: PageServerLoad = async ({ params, platform }) => {
         return error(404, 'Requested key does not exist');
     }
 
-    throw redirect(307, result.link);
+    redirect(307, result.link);
 };

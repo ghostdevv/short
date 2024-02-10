@@ -1,11 +1,10 @@
-import type { PageServerLoad } from './$types';
 import type { Link } from '$lib/types';
 import { error } from '@sveltejs/kit';
 
 type PartialLink = Pick<Link, 'key' | 'link'>;
 
-export const load: PageServerLoad = async ({ locals, platform }) => {
-    if (!platform) throw error(500, 'Platform not found');
+export const load = async ({ platform }) => {
+    if (!platform) error(500, 'Platform not found');
 
     const keys: string[] = [];
     let cursor: string = '';

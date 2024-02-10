@@ -14,7 +14,7 @@ async function kv(name: string) {
     const { FileStorage } = await import('@miniflare/storage-file');
     const { KVNamespace: KV } = await import('@miniflare/kv');
 
-    return new KV(new FileStorage(`./.mf/${name}`)) as KVNamespace;
+    return new KV(new FileStorage(`./.mf/${name}`)) as unknown as KVNamespace;
 }
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -35,8 +35,9 @@ export const handle: Handle = async ({ event, resolve }) => {
     if (
         !building &&
         (!event.platform?.env.LINKS || !event.platform?.env.LINKS_MAP)
-    )
-        throw error(500, 'Platform not found');
+    ) {
+        error(500, 'Platform not found');
+    }
 
     return resolve(event);
 };
