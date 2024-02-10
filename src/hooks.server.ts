@@ -13,8 +13,6 @@ export const handle: Handle = async ({ event, resolve }) => {
     const { account } = createOrGetAccount(event.cookies);
     event.locals.account = account;
 
-    console.log(account);
-
     if (dev) {
         event.platform ??= {
             env: {
