@@ -37,6 +37,11 @@ export const load = async ({ platform, locals }) => {
             continue;
         }
 
+        // Extra precaution
+        if (result.account !== locals.account) {
+            continue;
+        }
+
         links.push({ key, link: result.link });
     }
 
