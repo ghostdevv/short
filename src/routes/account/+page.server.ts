@@ -1,3 +1,4 @@
+import { getLink } from '$lib/server/links.js';
 import type { Link } from '$lib/types';
 import { error } from '@sveltejs/kit';
 
@@ -27,22 +28,11 @@ export const load = async ({ platform, locals }) => {
     const links: PartialLink[] = [];
 
     for (const key of keys) {
-        const raw = await platform.env.LINKS.get(key);
-        if (!raw) continue;
+        const link = await getLink(platform.env.LINKS, key);
 
-        const result: Link = JSON.parse(raw);
-
-        if (result.expiresAt <= Date.now()) {
-            await platform.env.LINKS.delete(key);
-            continue;
+        if (link) {
+            links.push({ key, link: link.link });
         }
-
-        // Extra precaution
-        if (result.account !== locals.account) {
-            continue;
-        }
-
-        links.push({ key, link: result.link });
     }
 
     return {

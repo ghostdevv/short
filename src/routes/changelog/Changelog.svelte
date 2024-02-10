@@ -1,3 +1,17 @@
+<h1>v2.2.0</h1>
+<ul>
+<li>Add title to page</li>
+<li>Update favicon</li>
+<li>Fix the <code>account:link_id</code> mapping not being removed</li>
+<li>Add missing titles (tooltips) to buttons</li>
+</ul>
+
+<h1>v2.1.2</h1>
+<ul>
+<li>Update deps</li>
+<li>Fix bug leaking links</li>
+</ul>
+
 <h1>v2.1.1</h1>
 <ul>
 <li>Add robots.txt</li>

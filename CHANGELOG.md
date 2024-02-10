@@ -1,3 +1,10 @@
+# v2.2.0
+
+- Add title to page
+- Update favicon
+- Fix the `account:link_id` mapping not being removed
+- Add missing titles (tooltips) to buttons
+
 # v2.1.2
 
 -   Update deps

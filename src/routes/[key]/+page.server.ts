@@ -1,19 +1,11 @@
-import type { PageServerLoad } from './$types';
 import { error, redirect } from '@sveltejs/kit';
-import type { Link } from '$lib/types';
+import { getLink } from '$lib/server/links';
 
-export const load: PageServerLoad = async ({ params, platform }) => {
+export async function load({ params, platform }) {
     if (!platform) error(500, 'Platform not found');
 
-    const raw = await platform.env.LINKS.get(params.key);
-    if (!raw) error(404, 'Requested key does not exist');
-
-    const result: Link = JSON.parse(raw);
-
-    if (result.expiresAt <= Date.now()) {
-        await platform.env.LINKS.delete(params.key);
-        return error(404, 'Requested key does not exist');
-    }
+    const result = await getLink(platform.env.LINKS, params.key);
+    if (!result) error(404, 'Requested link does not exist');
 
     redirect(307, result.link);
-};
+}
