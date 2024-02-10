@@ -1,5 +1,6 @@
 <script lang="ts">
     import 'ghostsui';
+    import '../app.scss';
     import { faCog, faClose, faUser } from '@fortawesome/free-solid-svg-icons';
     import { faGithub } from '@fortawesome/free-brands-svg-icons';
     import { faScroll } from '@fortawesome/free-solid-svg-icons';

@@ -2,6 +2,7 @@
 
 -   Prevent robots indexing a short link
 -   Create a PWA
+-   Add QR in account page
 
 # v2.2.0
 

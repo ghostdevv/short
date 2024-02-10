@@ -41,6 +41,9 @@ devDependencies:
   ghostsui:
     specifier: ^1.6.0
     version: 1.6.0
+  kjua:
+    specifier: ^0.9.0
+    version: 0.9.0
   marked:
     specifier: ^12.0.0
     version: 12.0.0
@@ -1637,6 +1640,10 @@ packages:
 
   /isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+    dev: true
+
+  /kjua@0.9.0:
+    resolution: {integrity: sha512-Wmh5k6hpl+wiYkcEIx0/Ocj1DOxacw/myh/SQ3NbY0RWD4360CXaaAJkdeeV+moqf7fxvACYK95LXQ8vtLWKxA==}
     dev: true
 
   /kleur@4.1.5:

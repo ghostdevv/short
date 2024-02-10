@@ -25,6 +25,7 @@
 		"@types/marked": "^6.0.0",
 		"@types/node": "^20.11.17",
 		"ghostsui": "^1.6.0",
+		"kjua": "^0.9.0",
 		"marked": "^12.0.0",
 		"nanoid": "^5.0.5",
 		"prettier": "^3.2.5",

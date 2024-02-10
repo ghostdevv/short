@@ -1,12 +1,14 @@
 <script lang="ts">
+    import { faClipboard, faQrcode } from '@fortawesome/free-solid-svg-icons';
     import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-    import { faClipboard } from '@fortawesome/free-solid-svg-icons';
-
+    import QrModal from './QRModal.svelte';
     import { copy } from 'svelte-copy';
-    import Fa from 'svelte-fa';
     import { page } from '$app/stores';
+    import Fa from 'svelte-fa';
 
     export let data;
+
+    let qrLinkKey: string | undefined;
 
     function truncateLink(link: string) {
         return link.length > 50 ? `${link.slice(0, 50)}...` : link;
@@ -24,6 +26,8 @@
 
 <hr />
 
+<QrModal bind:linkKey={qrLinkKey} />
+
 <section class="col">
     {#each data.links as { key, link }}
         <div class="card no-hover link">
@@ -31,6 +35,13 @@
             <h5>{truncateLink(link)}</h5>
 
             <div class="buttons">
+                <button
+                    title="Show QR code"
+                    class="button"
+                    on:click={() => (qrLinkKey = key)}>
+                    <Fa size="1.2x" icon={faQrcode} />
+                </button>
+
                 <button
                     title="Copy link URL"
                     class="button"
