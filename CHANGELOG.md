@@ -1,6 +1,7 @@
 # v2.3.0
 
 -   Prevent robots indexing a short link
+-   Create a PWA
 
 # v2.2.0
 
