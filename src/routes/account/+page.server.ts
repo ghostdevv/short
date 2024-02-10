@@ -32,6 +32,9 @@ export async function load({ platform, locals }) {
 
         if (link) {
             links.push({ key, link: link.link });
+        } else {
+            // somehow the link is gone, so we'll remove it from the map
+            await platform.env.LINKS_MAP.delete(`${locals.account}:${key}`);
         }
     }
 
