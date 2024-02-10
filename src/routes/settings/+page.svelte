@@ -45,7 +45,7 @@
                 {disabled} />
         </label>
 
-        <button {disabled}>Save</button>
+        <button title="Save settings" {disabled}>Save</button>
     </form>
 </section>
 
@@ -57,7 +57,12 @@
 
         <div class="row">
             <input type="color" bind:value={$themeColour} />
-            <button on:click={() => ($themeColour = '#2160ec')}> Reset </button>
+
+            <button
+                title="Reset to default colour"
+                on:click={() => ($themeColour = '#2160ec')}>
+                Reset
+            </button>
         </div>
     </label>
 
@@ -66,7 +71,10 @@
 
         <div class="row">
             <input type="color" bind:value={$textColour} />
-            <button on:click={() => ($textColour = '#eeeeee')}>Reset</button>
+
+            <button
+                title="Reset to default colour"
+                on:click={() => ($textColour = '#eeeeee')}>Reset</button>
         </div>
     </label>
 </section>

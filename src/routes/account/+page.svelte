@@ -31,11 +31,19 @@
             <h5>{truncateLink(link)}</h5>
 
             <div class="buttons">
-                <button class="button" use:copy={`${$page.url.origin}/${key}`}>
+                <button
+                    title="Copy link URL"
+                    class="button"
+                    use:copy={`${$page.url.origin}/${key}`}>
                     <Fa size="1.2x" icon={faClipboard} />
                 </button>
 
-                <a href="/{key}" class="button" target="blank" rel="noreferrer">
+                <a
+                    title="Open link in new tab"
+                    href="/{key}"
+                    class="button"
+                    target="blank"
+                    rel="noreferrer">
                     <Fa size="1.2x" icon={faUpRightFromSquare} />
                 </a>
             </div>
