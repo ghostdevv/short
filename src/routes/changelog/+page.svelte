@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Changelog from './Changelog.svelte';
+    export let data;
 </script>
 
 <section class="col">
@@ -13,6 +13,17 @@
 
 <hr />
 
-<section class="col">
-    <Changelog />
+<section class="col changelog">
+    {@html data.changelogHTML}
 </section>
+
+<style lang="scss">
+    :global(.changelog h1) {
+        margin-bottom: 12px;
+        margin-top: 12px;
+    }
+
+    :global(.changelog li) {
+        margin-bottom: 8px;
+    }
+</style>
