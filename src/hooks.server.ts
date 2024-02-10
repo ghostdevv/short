@@ -1,14 +1,6 @@
+import { createOrGetAccount } from '$lib/server/account';
 import { error, type Handle } from '@sveltejs/kit';
 import { dev, building } from '$app/environment';
-import { v4 as uuid } from '@lukeed/uuid';
-
-function getAccount(potential?: string) {
-    if (typeof potential != 'string' || !potential.trim().length) {
-        return uuid();
-    }
-
-    return potential;
-}
 
 async function kv(name: string) {
     const { FileStorage } = await import('@miniflare/storage-file');
@@ -18,10 +10,10 @@ async function kv(name: string) {
 }
 
 export const handle: Handle = async ({ event, resolve }) => {
-    const account = getAccount(event.cookies.get('account'));
-
+    const { account } = createOrGetAccount(event.cookies);
     event.locals.account = account;
-    event.cookies.set('account', account, { path: '/' });
+
+    console.log(account);
 
     if (dev) {
         event.platform ??= {
