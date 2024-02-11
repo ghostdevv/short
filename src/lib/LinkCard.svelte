@@ -5,15 +5,16 @@
         faUpRightFromSquare,
         faCheck,
     } from '@fortawesome/free-solid-svg-icons';
+    import QRModal from './QRModal.svelte';
     import { copy } from 'svelte-copy';
     import { page } from '$app/stores';
     import { onDestroy } from 'svelte';
     import Fa from 'svelte-fa';
 
-    export let qrLinkKey: string | undefined;
-
     export let link: string;
     export let key: string;
+
+    let qrModalOpen = false;
 
     let copied = false;
     let timeout: NodeJS.Timeout;
@@ -32,6 +33,8 @@
     });
 </script>
 
+<QRModal {key} bind:open={qrModalOpen} />
+
 <div class="card no-hover link">
     <h2>{key}</h2>
     <h5>{truncateLink(link)}</h5>
@@ -40,7 +43,7 @@
         <button
             title="Show QR code"
             class="simple"
-            on:click={() => (qrLinkKey = key)}>
+            on:click={() => (qrModalOpen = true)}>
             <Fa size="1.2x" icon={faQrcode} />
         </button>
 

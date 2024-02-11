@@ -4,22 +4,23 @@
     import { page } from '$app/stores';
     import Fa from 'svelte-fa';
 
-    export let linkKey: string | undefined;
+    export let key: string;
+    export let open: boolean;
 
     let dialog: HTMLDialogElement | undefined;
 
-    $: if (typeof linkKey == 'string') {
+    $: if (open) {
         dialog?.showModal();
     } else {
         dialog?.close();
     }
 
-    $: dest = `${$page.url.origin}/${linkKey}`;
+    $: dest = `${$page.url.origin}/${key}`;
 </script>
 
 <dialog class="qr-modal" bind:this={dialog}>
     <div class="content">
-        <button class="simple close" on:click={() => (linkKey = undefined)}>
+        <button class="simple close" on:click={() => (open = false)}>
             <Fa icon={faClose} size="1.2x" />
         </button>
 

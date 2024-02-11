@@ -1,10 +1,7 @@
 <script lang="ts">
     import LinkCard from '$lib/LinkCard.svelte';
-    import QrModal from '$lib/QRModal.svelte';
 
     export let data;
-
-    let qrLinkKey: string | undefined;
 </script>
 
 <section class="col">
@@ -18,11 +15,9 @@
 
 <hr />
 
-<QrModal bind:linkKey={qrLinkKey} />
-
 <section class="col">
     {#each data.links as { key, link }}
-        <LinkCard {key} {link} bind:qrLinkKey />
+        <LinkCard {key} {link} />
     {:else}
         <p>You don't have any links yet!</p>
     {/each}
