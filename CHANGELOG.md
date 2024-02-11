@@ -6,6 +6,7 @@
 -   Add visual confirmation that you copied link
 -   Better link create success ui
 -   Better link cards in account/create page
+-   More intuitive nav
 
 # v2.2.0
 
