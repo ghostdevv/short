@@ -3,6 +3,7 @@
 -   Prevent robots indexing a short link
 -   Create a PWA
 -   Add QR in account page
+-   Add visual confirmation that you copied link
 
 # v2.2.0
 
