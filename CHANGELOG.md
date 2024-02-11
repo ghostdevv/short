@@ -1,3 +1,7 @@
+# v2.3.2
+
+-   Update PWA icons
+
 # v2.3.1
 
 -   Fix style issue with link cards on mobile
