@@ -4,6 +4,7 @@
 -   Create a PWA
 -   Add QR in account page
 -   Add visual confirmation that you copied link
+-   Better link create success ui
 
 # v2.2.0
 

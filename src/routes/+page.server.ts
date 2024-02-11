@@ -36,6 +36,7 @@ export const actions = {
         return {
             success: true,
             key: link.key,
+            link: link.link,
         };
     },
 };
