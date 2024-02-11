@@ -44,6 +44,9 @@ devDependencies:
   ghostsui:
     specifier: ^1.6.0
     version: 1.6.0
+  include-media:
+    specifier: ^2.0.0
+    version: 2.0.0
   kjua:
     specifier: ^0.9.0
     version: 0.9.0
@@ -1591,6 +1594,10 @@ packages:
 
   /import-meta-resolve@4.0.0:
     resolution: {integrity: sha512-okYUR7ZQPH+efeuMJGlq4f8ubUgO50kByRPyt/Cy1Io4PSRsPjxME+YlVaCOx+NIToW7hCsZNFJyTPFFKepRSA==}
+    dev: true
+
+  /include-media@2.0.0:
+    resolution: {integrity: sha512-LSJcffPYIZ/Kln0rIi5UhqQbZxElDCMYA4dPC5MI1rkwwjptgEiOicHnzB0MMhMNJver0+4zULb4MKlgDyapZg==}
     dev: true
 
   /inflight@1.0.6:

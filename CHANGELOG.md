@@ -1,3 +1,7 @@
+# v2.3.1
+
+-   Fix style issue with link cards on mobile
+
 # v2.3.0
 
 -   Prevent robots indexing a short link

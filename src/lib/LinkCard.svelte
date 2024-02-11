@@ -36,7 +36,7 @@
 
 <div class="card no-hover link">
     <div class="col meta">
-        <h4>{$page.url.origin}/{key}</h4>
+        <h4>{key}</h4>
         <p class="dest-link" title={link}>{link}</p>
     </div>
 
@@ -78,6 +78,8 @@
 </div>
 
 <style lang="scss">
+    @import 'include-media';
+
     .link {
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
@@ -85,6 +87,10 @@
         grid-template-areas: 'meta buttons' 'meta stats';
         align-items: center;
         gap: 8px 16px;
+
+        @include media('<400px') {
+            padding: 16px;
+        }
 
         .meta {
             grid-area: meta;

@@ -26,6 +26,7 @@
 		"@types/node": "^20.11.17",
 		"date-fns": "^3.3.1",
 		"ghostsui": "^1.6.0",
+		"include-media": "^2.0.0",
 		"kjua": "^0.9.0",
 		"marked": "^12.0.0",
 		"nanoid": "^5.0.5",
