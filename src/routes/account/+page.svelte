@@ -15,7 +15,7 @@
 
 <hr />
 
-<section class="col">
+<section class="col g16">
     {#each data.links as link}
         <LinkCard {...link} />
     {:else}
