@@ -100,7 +100,6 @@
         .dest-link {
             color: rgba(var(--text-rgb), 0.8);
 
-            width: 50ch;
             max-width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;

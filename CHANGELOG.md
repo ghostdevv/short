@@ -1,6 +1,7 @@
 # v2.3.1
 
 -   Fix style issue with link cards on mobile
+-   Remove destination link length limit in a link card
 
 # v2.3.0
 
