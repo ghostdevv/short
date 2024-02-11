@@ -1,12 +1,12 @@
 # v2.3.0
 
 -   Prevent robots indexing a short link
--   Create a PWA
--   Add QR in account page
--   Add visual confirmation that you copied link
--   Better link create success ui
--   Better link cards in account/create page
--   More intuitive nav
+-   Make short a PWA
+-   Add a QR code to the link cards
+-   Add visual confirmation that you copied a link
+-   Show the same link card when you create a new link
+-   Improve link card design in account/create page
+-   Created a more intuitive nav
 
 # v2.2.0
 
