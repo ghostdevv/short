@@ -2,7 +2,7 @@ import { getLink } from '$lib/server/links.js';
 import type { Link } from '$lib/types';
 import { error } from '@sveltejs/kit';
 
-type PartialLink = Pick<Link, 'key' | 'link'>;
+type PartialLink = Pick<Link, 'key' | 'link' | 'expiresAt'>;
 
 export async function load({ platform, locals }) {
     if (!platform) error(500, 'Platform not found');
@@ -28,10 +28,13 @@ export async function load({ platform, locals }) {
     const links: PartialLink[] = [];
 
     for (const key of keys) {
-        const link = await getLink(platform.env.LINKS, key);
+        const link = await getLink(platform, key);
 
         if (link) {
-            links.push({ key, link: link.link });
+            links.push({ key, link: link.link, expiresAt: link.expiresAt });
+        } else {
+            // somehow the link is gone, so we'll remove it from the map
+            await platform.env.LINKS_MAP.delete(`${locals.account}:${key}`);
         }
     }
 

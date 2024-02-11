@@ -1,6 +1,7 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
     import { page } from '$app/stores';
+    import LinkCard from '$lib/LinkCard.svelte';
 
     export let form;
 </script>
@@ -40,12 +41,10 @@
     </form>
 </section>
 
-{#if form?.success}
-    {@const url = `${$page.url.origin}/${form.key}`}
-
-    <section class="col card no-hover">
+{#if form?.success && form?.link}
+    <section class="col">
         <h2 class="success">Success!</h2>
-        <a href={url} target="_blank" rel="noreferrer">{url}</a>
+        <LinkCard {...form.link} />
     </section>
 {/if}
 

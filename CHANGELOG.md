@@ -1,9 +1,19 @@
+# v2.3.0
+
+-   Prevent robots indexing a short link
+-   Make short a PWA
+-   Add a QR code to the link cards
+-   Add visual confirmation that you copied a link
+-   Show the same link card when you create a new link
+-   Improve link card design in account/create page
+-   Created a more intuitive nav
+
 # v2.2.0
 
-- Add title to page
-- Update favicon
-- Fix the `account:link_id` mapping not being removed
-- Add missing titles (tooltips) to buttons
+-   Add title to page
+-   Update favicon
+-   Fix the `account:link_id` mapping not being removed
+-   Add missing titles (tooltips) to buttons
 
 # v2.1.2
 

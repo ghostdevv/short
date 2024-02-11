@@ -1,0 +1,57 @@
+// todo replace with ghostsui 2 when done
+
+.simple {
+    all: unset;
+
+    padding: 8px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: color 0.2s ease-in-out;
+
+    // background-color: var(--background-tertiary);
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    &:hover:not(&:disabled),
+    &:active:not(&:disabled),
+    &:focus:not(&:disabled),
+    &.active {
+        box-shadow: none;
+        background-color: transparent;
+        color: var(--primary);
+    }
+}
+
+dialog {
+    background: var(--background-secondary);
+    color: var(--text);
+
+    border-radius: 12px;
+    border: 0px solid transparent;
+
+    padding: 32px;
+    width: min(80%, 600px);
+
+    // @include media('<600px') {
+    //     min-width: 90%;
+    // }
+
+    &[open] {
+        display: block;
+    }
+
+    &:focus {
+        outline: 2px solid var(--primary);
+    }
+
+    &::backdrop {
+        background: rgba(18, 18, 20, 0.8);
+    }
+}

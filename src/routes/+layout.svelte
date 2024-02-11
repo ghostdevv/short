@@ -1,17 +1,21 @@
 <script lang="ts">
     import 'ghostsui';
-    import { faCog, faClose, faUser } from '@fortawesome/free-solid-svg-icons';
+    import '../app.scss';
+
     import { faGithub } from '@fortawesome/free-brands-svg-icons';
-    import { faScroll } from '@fortawesome/free-solid-svg-icons';
     import { textColour, themeColour } from '$lib/settings';
     import { lightenColour } from '$lib/colour';
     import { browser } from '$app/environment';
     import { page } from '$app/stores';
     import Fa from 'svelte-fa';
+    import {
+        faScroll,
+        faUser,
+        faHome,
+        faCog,
+    } from '@fortawesome/free-solid-svg-icons';
 
-    $: changelogPage = $page.url.pathname.startsWith('/changelog');
-    $: settingsPage = $page.url.pathname.startsWith('/settings');
-    $: accountPage = $page.url.pathname.startsWith('/account');
+    $: tab = $page.url.pathname.split('/')[1] || 'home';
 
     $: if (browser && ($themeColour || $textColour)) {
         document.documentElement.style.setProperty('--primary', $themeColour);
@@ -28,26 +32,33 @@
 
 <nav>
     <div class="buttons">
+        <a href="/" class:active={tab == 'home'} title="Home">
+            <Fa size="1.2x" icon={faHome} />
+        </a>
+
+        <a href="/account" class:active={tab == 'account'} title="Account">
+            <Fa size="1.2x" icon={faUser} />
+        </a>
+
+        <a href="/settings" class:active={tab == 'settings'} title="Settings">
+            <Fa size="1.2x" icon={faCog} />
+        </a>
+
+        <a
+            href="/changelog"
+            class:active={tab == 'changelog'}
+            title="Changelog">
+            <Fa size="1.2x" icon={faScroll} />
+        </a>
+    </div>
+
+    <div class="buttons">
         <a
             href="https://github.com/ghostdevv/short"
             target="_blank"
             rel="noreferrer"
             title="GitHub">
-            <Fa size="1.5x" icon={faGithub} />
-        </a>
-
-        <a href={changelogPage ? '/' : '/changelog'} title="Changelog">
-            <Fa size="1.5x" icon={changelogPage ? faClose : faScroll} />
-        </a>
-    </div>
-
-    <div class="buttons">
-        <a href={accountPage ? '/' : '/account'} title="Account">
-            <Fa size="1.4x" icon={accountPage ? faClose : faUser} />
-        </a>
-
-        <a href={settingsPage ? '/' : '/settings'} title="Settings">
-            <Fa size="1.5x" icon={settingsPage ? faClose : faCog} />
+            <Fa size="1.2x" icon={faGithub} />
         </a>
     </div>
 </nav>
@@ -77,7 +88,8 @@
             color: rgba(var(--text-rgb), 0.6);
 
             &:hover,
-            &:focus {
+            &:focus,
+            &.active {
                 color: var(--primary);
             }
         }
@@ -85,7 +97,7 @@
 
     main,
     nav {
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0 auto;
 
         padding: 16px;

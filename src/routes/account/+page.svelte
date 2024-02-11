@@ -1,16 +1,7 @@
 <script lang="ts">
-    import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-    import { faClipboard } from '@fortawesome/free-solid-svg-icons';
-
-    import { copy } from 'svelte-copy';
-    import Fa from 'svelte-fa';
-    import { page } from '$app/stores';
+    import LinkCard from '$lib/LinkCard.svelte';
 
     export let data;
-
-    function truncateLink(link: string) {
-        return link.length > 50 ? `${link.slice(0, 50)}...` : link;
-    }
 </script>
 
 <section class="col">
@@ -24,59 +15,10 @@
 
 <hr />
 
-<section class="col">
-    {#each data.links as { key, link }}
-        <div class="card no-hover link">
-            <h2>{key}</h2>
-            <h5>{truncateLink(link)}</h5>
-
-            <div class="buttons">
-                <button
-                    title="Copy link URL"
-                    class="button"
-                    use:copy={`${$page.url.origin}/${key}`}>
-                    <Fa size="1.2x" icon={faClipboard} />
-                </button>
-
-                <a
-                    title="Open link in new tab"
-                    href="/{key}"
-                    class="button"
-                    target="blank"
-                    rel="noreferrer">
-                    <Fa size="1.2x" icon={faUpRightFromSquare} />
-                </a>
-            </div>
-        </div>
+<section class="col g16">
+    {#each data.links as link}
+        <LinkCard {...link} />
     {:else}
         <p>You don't have any links yet!</p>
     {/each}
 </section>
-
-<style lang="scss">
-    .link {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        justify-content: space-between;
-
-        .buttons {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-
-            .button {
-                padding: 8px;
-
-                border: none;
-                background: transparent;
-                color: rgba(var(--text-rgb), 0.6);
-
-                &:hover,
-                &:focus {
-                    color: var(--primary);
-                }
-            }
-        }
-    }
-</style>
