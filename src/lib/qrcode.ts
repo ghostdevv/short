@@ -8,8 +8,6 @@ export const qrcode: Action<HTMLDivElement, KjuaOptions> = (node, options) => {
     let codeElement: HTMLElement | undefined;
     let kjua: typeof Kjua;
 
-    console.log('qrcode');
-
     async function render(options: KjuaOptions) {
         kjua ||= (await import('kjua')).default;
 
