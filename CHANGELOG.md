@@ -2,6 +2,7 @@
 
 -   Fix style issue with link cards on mobile
 -   Remove destination link length limit in a link card
+-   Fix issue with CSRF and SW in **dev**
 
 # v2.3.0
 

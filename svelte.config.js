@@ -1,7 +1,7 @@
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import adapter from '@sveltejs/adapter-cloudflare';
 
-const NOT_DEV = import.meta?.env?.MODE != 'dev';
+const PROD = process.env['MODE'] != 'dev';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -11,11 +11,11 @@ const config = {
         adapter: adapter(),
 
         csrf: {
-            checkOrigin: NOT_DEV,
+            checkOrigin: PROD,
         },
 
         serviceWorker: {
-            register: NOT_DEV,
+            register: PROD,
         },
     },
 };
