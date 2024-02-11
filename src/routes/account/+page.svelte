@@ -1,6 +1,6 @@
 <script lang="ts">
-    import LinkCard from './LinkCard.svelte';
-    import QrModal from './QRModal.svelte';
+    import LinkCard from '$lib/LinkCard.svelte';
+    import QrModal from '$lib/QRModal.svelte';
 
     export let data;
 
