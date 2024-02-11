@@ -35,8 +35,11 @@ export const actions = {
 
         return {
             success: true,
-            key: link.key,
-            link: link.link,
+            link: {
+                key: link.key,
+                link: link.link,
+                expiresAt: link.expiresAt,
+            },
         };
     },
 };

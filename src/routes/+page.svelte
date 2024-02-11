@@ -41,12 +41,10 @@
     </form>
 </section>
 
-{#if form?.success && form?.key && form?.link}
-    {@const url = `${$page.url.origin}/${form.key}`}
-
+{#if form?.success && form?.link}
     <section class="col">
         <h2 class="success">Success!</h2>
-        <LinkCard key={form.key} link={form.link} />
+        <LinkCard {...form.link} />
     </section>
 {/if}
 

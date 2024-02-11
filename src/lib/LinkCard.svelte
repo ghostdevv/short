@@ -1,10 +1,12 @@
 <script lang="ts">
     import {
-        faClipboard,
-        faQrcode,
-        faUpRightFromSquare,
+        faCopy,
         faCheck,
+        faQrcode,
+        faStopwatch,
+        faUpRightFromSquare,
     } from '@fortawesome/free-solid-svg-icons';
+    import { formatDistanceToNowStrict } from 'date-fns';
     import QRModal from './QRModal.svelte';
     import { copy } from 'svelte-copy';
     import { page } from '$app/stores';
@@ -13,19 +15,16 @@
 
     export let link: string;
     export let key: string;
+    export let expiresAt: number;
 
     let qrModalOpen = false;
 
     let copied = false;
-    let timeout: NodeJS.Timeout;
+    let timeout: NodeJS.Timeout | undefined;
 
     function confirmCopied() {
         copied = true;
-        setTimeout(() => (copied = false), 2000);
-    }
-
-    function truncateLink(link: string) {
-        return link.length > 50 ? `${link.slice(0, 50)}...` : link;
+        timeout = setTimeout(() => (copied = false), 2000);
     }
 
     onDestroy(() => {
@@ -36,8 +35,10 @@
 <QRModal {key} bind:open={qrModalOpen} />
 
 <div class="card no-hover link">
-    <h2>{key}</h2>
-    <h5>{truncateLink(link)}</h5>
+    <div class="col meta">
+        <h4>{$page.url.origin}/{key}</h4>
+        <p class="dest-link" title={link}>{link}</p>
+    </div>
 
     <div class="buttons">
         <button
@@ -54,7 +55,7 @@
             use:copy={`${$page.url.origin}/${key}`}>
             <Fa
                 size="1.2x"
-                icon={copied ? faCheck : faClipboard}
+                icon={copied ? faCheck : faCopy}
                 color={copied ? 'var(--green)' : undefined} />
         </button>
 
@@ -67,19 +68,52 @@
             <Fa size="1.2x" icon={faUpRightFromSquare} />
         </a>
     </div>
+
+    <div class="stats">
+        <p title="Expires at {new Date(expiresAt).toISOString()}">
+            <Fa icon={faStopwatch} />&nbsp;
+            {formatDistanceToNowStrict(expiresAt)}
+        </p>
+    </div>
 </div>
 
 <style lang="scss">
     .link {
-        display: flex;
-        flex-flow: row nowrap;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-rows: repeat(2, max-content);
+        grid-template-areas: 'meta buttons' 'meta stats';
         align-items: center;
-        justify-content: space-between;
+        gap: 8px 16px;
+
+        .meta {
+            grid-area: meta;
+            max-width: 100%;
+        }
+
+        .dest-link {
+            color: rgba(var(--text-rgb), 0.8);
+
+            width: 50ch;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
 
         .buttons {
             display: flex;
             align-items: center;
             gap: 8px;
+
+            grid-area: buttons;
+            justify-self: end;
+        }
+
+        .stats {
+            grid-area: stats;
+            justify-self: end;
+            color: rgba(var(--text-rgb), 0.8);
         }
     }
 </style>

@@ -16,8 +16,8 @@
 <hr />
 
 <section class="col">
-    {#each data.links as { key, link }}
-        <LinkCard {key} {link} />
+    {#each data.links as link}
+        <LinkCard {...link} />
     {:else}
         <p>You don't have any links yet!</p>
     {/each}

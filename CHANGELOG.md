@@ -5,6 +5,7 @@
 -   Add QR in account page
 -   Add visual confirmation that you copied link
 -   Better link create success ui
+-   Better link cards in account/create page
 
 # v2.2.0
 
