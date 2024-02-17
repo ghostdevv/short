@@ -1,3 +1,7 @@
+# v2.3.3
+
+-   Make short links be alphanumeric
+
 # v2.3.2
 
 -   Update PWA icons
