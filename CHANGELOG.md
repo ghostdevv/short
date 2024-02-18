@@ -1,3 +1,10 @@
+# v2.4.0
+
+-   Make short links be alphanumeric
+-   Make links case insensitive
+-   Fix skeleton animation not being removed on qr codes
+-   Fix not reloading data after account uuid changes
+
 # v2.3.2
 
 -   Update PWA icons

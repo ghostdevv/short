@@ -45,6 +45,7 @@
     <section class="col">
         <h2 class="success">Success!</h2>
         <LinkCard {...form.link} />
+        <p class="case-note">Short Links are case insensitive</p>
     </section>
 {/if}
 
@@ -56,6 +57,12 @@
 {/if}
 
 <style lang="scss">
+    .case-note {
+        color: rgba(var(--text-rgb), 0.6);
+        margin: 0 auto;
+        font-size: 14px;
+    }
+
     .success {
         color: var(--green);
     }

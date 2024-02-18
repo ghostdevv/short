@@ -14,6 +14,7 @@ export const qrcode: Action<HTMLDivElement, KjuaOptions> = (node, options) => {
         codeElement && node.removeChild(codeElement);
         codeElement = kjua(options);
         node.appendChild(codeElement);
+        node.classList.remove('skeleton');
     }
 
     render(options);

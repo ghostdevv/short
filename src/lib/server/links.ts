@@ -1,6 +1,8 @@
 import { resolveExpiry, type ExpiryString } from '$lib/expiry';
 import { LinkType, type Link } from '$lib/types';
-import { nanoid } from 'nanoid';
+import { customAlphabet } from 'nanoid';
+
+const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789');
 
 async function deleteLink(platform: App.Platform, link: Link) {
     console.log('deleting', link.key);
