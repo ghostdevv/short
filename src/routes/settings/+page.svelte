@@ -32,7 +32,7 @@
             disabled = true;
             return async ({ update }) => {
                 disabled = false;
-                await update({ reset: false });
+                await update({ reset: false, invalidateAll: true });
             };
         }}>
         <label>
