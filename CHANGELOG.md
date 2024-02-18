@@ -1,6 +1,7 @@
-# v2.3.3
+# v2.4.0
 
 -   Make short links be alphanumeric
+-   Make links case insensitive
 
 # v2.3.2
 
