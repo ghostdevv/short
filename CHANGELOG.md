@@ -1,3 +1,7 @@
+# v2.5.0
+
+-   Make QR Codes follow the theme colour
+
 # v2.4.0
 
 -   Make short links be alphanumeric

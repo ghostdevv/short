@@ -30,7 +30,8 @@
                 text: dest,
                 size: 200,
                 back: '#212123',
-                fill: '#2160ec',
+                fill: 'var(--primary)',
+                render: 'svg',
             }}>
         </div>
 
