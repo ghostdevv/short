@@ -25,7 +25,7 @@
         </button>
 
         <div
-            class="qrcode"
+            class="qrcode skeleton"
             use:qrcode={{
                 text: dest,
                 size: 200,
@@ -42,7 +42,9 @@
     .qrcode {
         width: 200px;
         height: 200px;
+    }
 
+    .skeleton {
         background-color: var(--background-tertiary);
         animation: infinite 600ms skeleton alternate;
     }

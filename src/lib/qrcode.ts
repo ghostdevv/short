@@ -9,11 +9,13 @@ export const qrcode: Action<HTMLDivElement, KjuaOptions> = (node, options) => {
     let kjua: typeof Kjua;
 
     async function render(options: KjuaOptions) {
+        console.log('kjua', kjua);
         kjua ||= (await import('kjua')).default;
 
         codeElement && node.removeChild(codeElement);
         codeElement = kjua(options);
         node.appendChild(codeElement);
+        node.classList.remove('skeleton');
     }
 
     render(options);

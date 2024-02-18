@@ -2,6 +2,7 @@
 
 -   Make short links be alphanumeric
 -   Make links case insensitive
+-   Fix skeleton animation not being removed on qr codes
 
 # v2.3.2
 
