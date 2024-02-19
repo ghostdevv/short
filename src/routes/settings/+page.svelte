@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { themeColour, textColour } from '$lib/settings';
+    import { themeColour, textColour, qrCodeImage } from '$lib/settings';
     import { enhance } from '$app/forms';
 
     export let data;
@@ -75,6 +75,18 @@
             <button
                 title="Reset to default colour"
                 on:click={() => ($textColour = '#eeeeee')}>Reset</button>
+        </div>
+    </label>
+
+    <label>
+        QR Code Image
+
+        <div class="row">
+            <input type="url" bind:value={$qrCodeImage} />
+
+            <button
+                title="Reset to default colour"
+                on:click={() => ($qrCodeImage = null)}>Reset</button>
         </div>
     </label>
 </section>

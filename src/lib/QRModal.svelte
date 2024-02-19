@@ -3,6 +3,7 @@
     import { qrcode } from '$lib/qrcode';
     import { page } from '$app/stores';
     import Fa from 'svelte-fa';
+    import { qrCodeImage } from './settings';
 
     export let key: string;
     export let open: boolean;
@@ -15,6 +16,16 @@
         dialog?.close();
     }
 
+    function getImage(src: string | null) {
+        if (src) {
+            const image = new Image();
+            image.src = src;
+
+            return image;
+        }
+    }
+
+    $: image = getImage($qrCodeImage);
     $: dest = `${$page.url.origin}/${key}`;
 </script>
 
@@ -28,10 +39,13 @@
             class="qrcode skeleton"
             use:qrcode={{
                 text: dest,
-                size: 200,
+                size: 250,
                 back: '#212123',
                 fill: 'var(--primary)',
                 render: 'svg',
+                ecLevel: 'M',
+                image,
+                mode: image ? 'image' : 'plain',
             }}>
         </div>
 
@@ -41,8 +55,8 @@
 
 <style lang="scss">
     .qrcode {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
     }
 
     .skeleton {
