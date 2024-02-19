@@ -1,6 +1,7 @@
 # v2.5.0
 
 -   Make QR Codes follow the theme colour
+-   Fix modal width on mobile
 
 # v2.4.0
 
