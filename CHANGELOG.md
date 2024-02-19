@@ -1,3 +1,9 @@
+# v2.5.0
+
+-   Make QR Codes follow the theme colour
+-   Fix modal width on mobile
+-   Add QR Code image option
+
 # v2.4.0
 
 -   Make short links be alphanumeric
