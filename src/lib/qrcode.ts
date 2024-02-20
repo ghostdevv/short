@@ -2,8 +2,6 @@ import type { Action } from 'svelte/action';
 import type { KjuaOptions } from 'kjua';
 import type Kjua from 'kjua';
 
-export let options: KjuaOptions;
-
 export const qrcode: Action<HTMLDivElement, KjuaOptions> = (node, options) => {
     let codeElement: HTMLElement | undefined;
     let kjua: typeof Kjua;
