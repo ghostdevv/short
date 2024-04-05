@@ -4,7 +4,7 @@ A foss, self hostable, and private link shortener. Every element of the shortner
 
 > ### Public instance available here: https://short.willow.sh/
 
-# Migrating to v2
+## Migrating to v2
 
 In v2 we removed the need for a seperate backend cf worker. After you migrate the frontend you can just delete the worker, since all your data is in KV you won't lose anything or have any migration for it.
 
@@ -12,7 +12,7 @@ To migrate you should update your fork, and add the following KV under `Settings
 
 ![Functions KV Bindings](https://i.imgur.com/C33xfMw.png)
 
-# Self Host
+## Self Host
 
 1. Create KV Namespaces
 
@@ -31,3 +31,7 @@ To migrate you should update your fork, and add the following KV under `Settings
     On pages under `Settings > Functions > KV namespace bindings` you need to add the following `LINKS` and `LINKS_MAP` variables for preview and production. They must be named exactly otherwise they won't work
 
     ![Functions KV Bindings](https://i.imgur.com/C33xfMw.png)
+
+## Versioning
+
+This project follows SemVer and has a [changelog](./CHANGELOG.md) available. However, you should always read the changes before updating your self hosted version!
