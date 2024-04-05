@@ -1,3 +1,7 @@
+# v2.6.0
+
+-   Use better mocking system in dev
+
 # v2.5.0
 
 -   Make QR Codes follow the theme colour

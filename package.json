@@ -17,8 +17,6 @@
 		"@fortawesome/free-brands-svg-icons": "^6.5.2",
 		"@fortawesome/free-solid-svg-icons": "^6.5.2",
 		"@lukeed/uuid": "^2.0.1",
-		"@miniflare/kv": "^2.14.2",
-		"@miniflare/storage-file": "^2.14.2",
 		"@sveltejs/adapter-cloudflare": "^4.2.1",
 		"@sveltejs/kit": "^2.5.5",
 		"@sveltejs/vite-plugin-svelte": "^3.0.2",
