@@ -1,3 +1,8 @@
+# v2.6.0
+
+-   Use better mocking system in dev
+-   Utilise KV expiration to automatically delete old links
+
 # v2.5.0
 
 -   Make QR Codes follow the theme colour
