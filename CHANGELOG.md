@@ -1,3 +1,7 @@
+# v2.6.1
+
+-   Fix internal error caused by incorrect timestamp
+
 # v2.6.0
 
 -   Use better mocking system in dev

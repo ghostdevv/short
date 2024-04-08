@@ -50,11 +50,11 @@ export async function createLink(
     };
 
     await platform.env.LINKS.put(key, JSON.stringify(link), {
-        expiration: expiresAt,
+        expiration: expiresAt / 1000,
     });
 
     await platform.env.LINKS_MAP.put(`${options.account}:${key}`, '', {
-        expiration: expiresAt,
+        expiration: expiresAt / 1000,
     });
 
     return link;
