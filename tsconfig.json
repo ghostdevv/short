@@ -3,11 +3,11 @@
 	"compilerOptions": {
 		"strict": true,
 		"moduleResolution": "Bundler",
-		"module": "es2020",
+		"module": "ESNext",
 		"lib": [
-			"es2020"
+			"ESNext"
 		],
-		"target": "es2019",
+		"target": "ESNext",
 		"verbatimModuleSyntax": true,
 		"isolatedModules": true,
 		"resolveJsonModule": true,
