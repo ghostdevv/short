@@ -1,7 +1,3 @@
-<script lang="ts">
-    export let data;
-</script>
-
 <section class="col">
     <h1>Changelog</h1>
 
@@ -14,7 +10,8 @@
 <hr />
 
 <section class="col changelog">
-    {@html data.changelogHTML}
+    <!-- svelte-ignore missing-declaration -->
+    {@html __CHANGELOG_HTML__}
 </section>
 
 <style lang="scss">

@@ -3,21 +3,27 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 // and what to do when importing types
-declare namespace App {
-    interface Locals {
-        account: string;
-    }
+declare global {
+    const __CHANGELOG_HTML__: string;
 
-    interface PageData {
-        account: string;
-    }
+    namespace App {
+        interface Locals {
+            account: string;
+        }
 
-    interface Platform {
-        env: {
-            LINKS: KVNamespace;
-            LINKS_MAP: KVNamespace;
-        };
-    }
+        interface PageData {
+            account: string;
+        }
 
-    // interface Error {}
+        interface Platform {
+            env: {
+                LINKS: KVNamespace;
+                LINKS_MAP: KVNamespace;
+            };
+        }
+
+        // interface Error {}
+    }
 }
+
+export {};

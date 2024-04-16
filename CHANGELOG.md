@@ -2,6 +2,7 @@
 
 -   Switch to `kjua-revived` for qr codes
 -   Add auth config option
+-   Render changelog at build time
 
 # v2.6.1
 
