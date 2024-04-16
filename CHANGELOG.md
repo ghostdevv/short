@@ -1,3 +1,7 @@
+# v2.7.0
+
+-   Switch to `kjua-revived` for qr codes
+
 # v2.6.1
 
 -   Fix internal error caused by incorrect timestamp

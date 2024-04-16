@@ -1,16 +1,16 @@
+import { kjua, type KjuaInputOptions } from 'kjua-revived';
 import type { Action } from 'svelte/action';
-import type { KjuaOptions } from 'kjua';
-import type Kjua from 'kjua';
 
-export const qrcode: Action<HTMLDivElement, KjuaOptions> = (node, options) => {
-    let codeElement: HTMLElement | undefined;
-    let kjua: typeof Kjua;
+interface Options extends KjuaInputOptions {
+    text: string;
+}
 
-    async function render(options: KjuaOptions) {
-        kjua ||= (await import('kjua')).default;
+export const qrcode: Action<HTMLDivElement, Options> = (node, options) => {
+    let codeElement: SVGElement | undefined;
 
+    async function render(options: Options) {
         codeElement && node.removeChild(codeElement);
-        codeElement = kjua(options);
+        codeElement = kjua(options.text, { ...options, render: 'svg' });
         node.appendChild(codeElement);
         node.classList.remove('skeleton');
     }

@@ -2,7 +2,7 @@
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
 		"strict": true,
-		"moduleResolution": "node",
+		"moduleResolution": "Bundler",
 		"module": "es2020",
 		"lib": [
 			"es2020"

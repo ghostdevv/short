@@ -1,9 +1,9 @@
 <script lang="ts">
     import { faClose } from '@fortawesome/free-solid-svg-icons';
+    import { qrCodeImage } from './settings';
     import { qrcode } from '$lib/qrcode';
     import { page } from '$app/stores';
     import Fa from 'svelte-fa';
-    import { qrCodeImage } from './settings';
 
     export let key: string;
     export let open: boolean;
@@ -16,16 +16,6 @@
         dialog?.close();
     }
 
-    function getImage(src: string | null) {
-        if (src) {
-            const image = new Image();
-            image.src = src;
-
-            return image;
-        }
-    }
-
-    $: image = getImage($qrCodeImage);
     $: dest = `${$page.url.origin}/${key}`;
 </script>
 
@@ -44,8 +34,8 @@
                 fill: 'var(--primary)',
                 render: 'svg',
                 ecLevel: 'M',
-                image,
-                mode: image ? 'image' : 'plain',
+                image: $qrCodeImage || undefined,
+                mode: $qrCodeImage ? 'image' : 'plain',
             }}>
         </div>
 
