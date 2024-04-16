@@ -26,6 +26,8 @@ A foss, self hostable, and private link shortener. Every element of the shortner
 
 ## Configuration
 
+All configuration is done with environment variables.
+
 ### Auth
 
 If you want to protect your installation with auth you can set the `SHORT_AUTH_USERNAME` and `SHORT_AUTH_PASSWORD` environment variable. This will prevent access to the UI and still allow people with a valid link to use it.
