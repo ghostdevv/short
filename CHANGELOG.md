@@ -1,6 +1,7 @@
 # v2.7.0
 
 -   Switch to `kjua-revived` for qr codes
+-   Add auth config option
 
 # v2.6.1
 

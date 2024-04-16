@@ -2,15 +2,7 @@
 
 A foss, self hostable, and private link shortener. Every element of the shortner is self-hostable for **free** using Cloudflare.
 
-> ### Public instance available here: https://short.willow.sh/
-
-## Migrating to v2
-
-In v2 we removed the need for a seperate backend cf worker. After you migrate the frontend you can just delete the worker, since all your data is in KV you won't lose anything or have any migration for it.
-
-To migrate you should update your fork, and add the following KV under `Settings > Functions > KV namespace bindings` of your pages project:
-
-![Functions KV Bindings](https://i.imgur.com/C33xfMw.png)
+> ### Demo instance available here: https://short.willow.sh/
 
 ## Self Host
 
@@ -32,6 +24,20 @@ To migrate you should update your fork, and add the following KV under `Settings
 
     ![Functions KV Bindings](https://i.imgur.com/C33xfMw.png)
 
+## Configuration
+
+### Auth
+
+If you want to protect your installation with auth you can set the `SHORT_AUTH_USERNAME` and `SHORT_AUTH_PASSWORD` environment variable. This will prevent access to the UI and still allow people with a valid link to use it.
+
 ## Versioning
 
 This project follows SemVer and has a [changelog](./CHANGELOG.md) available. However, you should always read the changes before updating your self hosted version!
+
+## Migrating to v2
+
+In v2 we removed the need for a seperate backend cf worker. After you migrate the frontend you can just delete the worker, since all your data is in KV you won't lose anything or have any migration for it.
+
+To migrate you should update your fork, and add the following KV under `Settings > Functions > KV namespace bindings` of your pages project:
+
+![Functions KV Bindings](https://i.imgur.com/C33xfMw.png)
